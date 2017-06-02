@@ -64,6 +64,8 @@ public class MainActivity extends BaseActivity {
         mData.add("okhttp的使用");
         mData.add("DrawerLayout测滑的使用");
         mData.add("EventBus的使用");
+        mData.add("平移动画的使用");
+        mData.add("DataBining的使用");
     }
 
     @Override
