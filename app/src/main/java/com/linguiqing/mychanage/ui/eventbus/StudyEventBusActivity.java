@@ -1,6 +1,8 @@
 package com.linguiqing.mychanage.ui.eventbus;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -55,8 +57,10 @@ public class StudyEventBusActivity extends BaseActivity {
     public void initView(Bundle savedInstanceState) {
         EventBusAdapter mAdapter = new EventBusAdapter(mContext, mList, R.layout.item_study_event_bus);
         mLsvEventBus.setAdapter(mAdapter);
-
     }
 
-
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+    }
 }
