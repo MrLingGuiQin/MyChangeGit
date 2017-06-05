@@ -2,6 +2,8 @@ package com.linguiqing.mychanage.ui.coustomView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +30,16 @@ public class Titlebar extends LinearLayout {
     public Titlebar(Context context, RelativeLayout root) {
         super(context);
         initView(context, root);
+    }
+
+    public Titlebar(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        initView(context, null);
+    }
+
+    public Titlebar(Context context) {
+        super(context);
+        initView(context, null);
     }
 
     public void initView(final Context context, RelativeLayout root) {

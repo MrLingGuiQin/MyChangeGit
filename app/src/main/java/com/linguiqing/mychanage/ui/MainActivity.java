@@ -22,6 +22,7 @@ import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewUsedMu
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.ui.selectPhoto.activity.SelectPhotoActivity;
 import com.linguiqing.mychanage.ui.usedAnimation.StudyAnimationActivity;
+import com.linguiqing.mychanage.ui.usedDataBinging.StudyDataBindingActivity;
 import com.linguiqing.mychanage.ui.usedFragment.UsedFragmentActivity;
 import com.linguiqing.mychanage.ui.usedOkHttp.UsedOkHttpActivity;
 import com.linguiqing.mychanage.util.BaseCustomDialog;
@@ -165,7 +166,7 @@ public class MainActivity extends BaseActivity {
                         goToCustomActivity(StudyAnimationActivity.class);
                         break;
                     case 13: //DataBining的使用
-//                        goToCustomActivity(StudyEventBusActivity.class);
+                        goToCustomActivity(StudyDataBindingActivity.class);
                         break;
                 }
             }

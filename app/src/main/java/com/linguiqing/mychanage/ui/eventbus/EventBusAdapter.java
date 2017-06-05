@@ -9,6 +9,8 @@ import com.linguiqing.mychanage.base.BaseViewHolder;
 import com.linguiqing.mychanage.base.CommonAdapter;
 import com.linguiqing.mychanage.util.LogUtil;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 
@@ -32,7 +34,7 @@ public class EventBusAdapter extends CommonAdapter<String> {
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        LogUtil.d("您点击了第" + helper.getPosition() + "个位置");
+                        EventBus.getDefault().post(new EventDataBean(helper.getPosition()));
                     }
                 });
     }

@@ -3,10 +3,12 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral() //添加lamda
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5'  //添加lamdas
 
         
         // NOTE: Do not place your application dependencies here; they belong
