@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#ff4081</color>
     <color name="titlebar_ok_textcolor">#FFFFFFFF</color>
-    <color name="titlebar_title_textcolor">#FFFFFFFF</color>
+    <color name="titlebar_title_textcolor">#ffffff</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="red">#ff2727</color>

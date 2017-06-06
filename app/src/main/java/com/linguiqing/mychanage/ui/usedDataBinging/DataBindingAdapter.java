@@ -7,6 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.linguiqing.mychanage.interfaces.OnItemClickListener;
+
+import java.util.List;
+
+
 /**
  * ***************************************
  * statement:
@@ -15,25 +20,48 @@ import android.view.ViewGroup;
  * ***************************************
  */
 
-public class DataBindingAdapter extends RecyclerView.Adapter<DataBindingAdapter.MyViewHolder> {
+public class DataBindingAdapter<T> extends RecyclerView.Adapter<DataBindingAdapter.MyViewHolder> {
+    private List<T> mData;
+    private int mLayoutId;
+    private int mBRId;
+    private OnItemClickListener mOnItemClickListener;
 
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
+    public DataBindingAdapter(List<T> data, int layoutId, int BRId) {
+        mData = data;
+        mLayoutId = layoutId;
+        mBRId = BRId;
+    }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ViewDataBinding binding = DataBindingUtil.inflate(inflater, -1, parent, false);
+        ViewDataBinding binding = DataBindingUtil.inflate(inflater, mLayoutId, parent, false);
         MyViewHolder viewHolder = new MyViewHolder(binding.getRoot());
+        viewHolder.setViewDataBinding(binding);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-//    holder.getViewDataBinding().setVariable()
+    public void onBindViewHolder(DataBindingAdapter.MyViewHolder holder, int position) {
+        holder.getViewDataBinding().setVariable(mBRId, mData.get(position));
+        holder.getViewDataBinding().executePendingBindings();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onClick(holder.itemView, holder.getLayoutPosition());
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mData != null ? mData.size() : 0;
     }
 
 
