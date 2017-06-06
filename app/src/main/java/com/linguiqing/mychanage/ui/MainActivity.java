@@ -68,6 +68,7 @@ public class MainActivity extends BaseActivity {
         mData.add("EventBus的使用");
         mData.add("Animation动画的使用");
         mData.add("DataBining的使用");
+        mData.add("Dagger2的使用");
     }
 
     @Override
