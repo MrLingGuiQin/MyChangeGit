@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.interfaces.OnItemClickListener;
+import com.linguiqing.mychanage.ui.Permission.StudyPermissionActivity;
 import com.linguiqing.mychanage.ui.drawerLayout.DrawerLayoutActivity;
 import com.linguiqing.mychanage.ui.eventbus.StudyEventBusActivity;
 import com.linguiqing.mychanage.ui.handler.StudyHandlerActivity;
@@ -68,6 +69,7 @@ public class MainActivity extends BaseActivity {
         mData.add("EventBus的使用");
         mData.add("Animation动画的使用");
         mData.add("DataBining的使用");
+        mData.add("android 6.0 Permission处理");
     }
 
     @Override
@@ -167,6 +169,9 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 13: //DataBining的使用
                         goToCustomActivity(StudyDataBindingActivity.class);
+                        break;
+                    case 14: // android 6.0 权限处理
+                        goToCustomActivity(StudyPermissionActivity.class);
                         break;
                 }
             }

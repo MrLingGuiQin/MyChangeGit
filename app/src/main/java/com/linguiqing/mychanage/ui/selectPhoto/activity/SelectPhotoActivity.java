@@ -1,5 +1,6 @@
 package com.linguiqing.mychanage.ui.selectPhoto.activity;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -22,6 +23,8 @@ import android.widget.Toast;
 
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
+import com.linguiqing.mychanage.ui.Permission.IPermissionResult;
+import com.linguiqing.mychanage.ui.Permission.PermissionUtil;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.ui.selectPhoto.SelectImageDirPopupWindow;
 import com.linguiqing.mychanage.ui.selectPhoto.adapter.SelectPhotoAdapter;
@@ -127,7 +130,13 @@ public class SelectPhotoActivity extends BaseActivity implements SelectImageDirP
     @Override
     public void initData() {
         getScreenHight();
-        getImages();
+        PermissionUtil.request(this, PermissionUtil.REQUEST_STORAGE_CODE, new IPermissionResult() {
+                    @Override
+                    public void OnSucceed(int requestCode, List<String> grantPermissions) {
+                        getImages();
+                    }
+                }, Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE);
     }
 
     /**
