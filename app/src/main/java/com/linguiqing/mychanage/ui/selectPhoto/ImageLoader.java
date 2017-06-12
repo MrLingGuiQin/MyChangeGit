@@ -71,7 +71,8 @@ public class ImageLoader {
             @Override
             public void run() {
                 Looper.prepare();
-                mPoolThreadHandle = new Handler() {
+                mPoolThreadHandle =
+                        new Handler() {
                     @Override
                     public void handleMessage(Message msg) {// 线程池取出一个任务进行执行
                         mThreadPool.execute(getTask());
