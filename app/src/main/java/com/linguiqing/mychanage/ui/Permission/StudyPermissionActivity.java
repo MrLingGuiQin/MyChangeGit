@@ -8,10 +8,10 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -21,11 +21,8 @@ import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.util.SystemUtil;
-import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.PermissionNo;
 import com.yanzhenjie.permission.PermissionYes;
-import com.yanzhenjie.permission.Rationale;
-import com.yanzhenjie.permission.RationaleListener;
 
 import java.util.List;
 
@@ -102,20 +99,134 @@ public class StudyPermissionActivity extends BaseActivity {
                 handleContacts();
                 break;
             case R.id.btn_location: // 定位
+                handleLocation();
                 break;
             case R.id.btn_microp_phone: // 麦克风
+                handleMicrop();
                 break;
             case R.id.btn_storage: // 内存卡
+                handleStorage();
                 break;
             case R.id.btn_sms: // 短信
+                handleSMS();
                 break;
             case R.id.btn_sensors: //传感器
+                handleSensors();
                 break;
             case R.id.btn_camera: //照相机
+                handleCamera();
                 break;
             case R.id.btn_calendar: //日历
+                handleCalendar();
                 break;
         }
+    }
+
+    /**
+     * 处理传感器权限
+     */
+    private void handleCamera() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_CAMERA_CODE,
+                new IPermissionSuccessCallback() {
+                    @Override
+                    public void OnSucceed(int requestCode, List<String> grantPermissions) {
+                        showToast("获取相机权限成功", Toast.LENGTH_LONG);
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivity(intent);
+                    }
+                }, Manifest.permission.CAMERA);
+    }
+
+    /**
+     * 处理日历权限
+     */
+    private void handleCalendar() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_SENSORS_CODE,
+                new IPermissionSuccessCallback() {
+                    @Override
+                    public void OnSucceed(int requestCode, List<String> grantPermissions) {
+                        showToast("获取传感器权限成功", Toast.LENGTH_LONG);
+                    }
+                }, Manifest.permission.READ_CALENDAR,
+                Manifest.permission.WRITE_CALENDAR);
+
+    }
+
+    /**
+     * 处理传感器权限
+     */
+    private void handleSensors() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_SENSORS_CODE,
+                new IPermissionSuccessCallback() {
+                    @Override
+                    public void OnSucceed(int requestCode, List<String> grantPermissions) {
+                        showToast("获取传感器权限成功", Toast.LENGTH_LONG);
+                    }
+                }, Manifest.permission.BODY_SENSORS);
+
+    }
+
+    /**
+     * 处理短信权限
+     */
+    private void handleSMS() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_SMS_CODE,
+                new IPermissionSuccessCallback() {
+                    @Override
+                    public void OnSucceed(int requestCode, List<String> grantPermissions) {
+                        showToast("获取短信权限成功", Toast.LENGTH_LONG);
+                    }
+                }, Manifest.permission.BROADCAST_SMS,
+                Manifest.permission.READ_SMS,
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.RECEIVE_SMS
+        );
+    }
+
+    /**
+     * 处理读写内存卡权限
+     * 跳转到系统图库
+     */
+    private void handleStorage() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_STORAGE_CODE,
+                new IPermissionSuccessCallback() {
+                    @Override
+                    public void OnSucceed(int requestCode, List<String> grantPermissions) {
+                        showToast("获取内存卡权限成功", Toast.LENGTH_LONG);
+                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                        intent.addCategory(Intent.CATEGORY_OPENABLE);
+                        intent.setType("image/*");
+                        startActivityForResult(intent, 0);
+                    }
+                }, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+    }
+
+    /**
+     * 处理麦克风权限
+     */
+    private void handleMicrop() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_MICROP_CODE,
+                new IPermissionSuccessCallback() {
+                    @Override
+                    public void OnSucceed(int requestCode, List<String> grantPermissions) {
+                        Intent mi = new Intent(MediaStore.Audio.Media.RECORD_SOUND_ACTION);
+                        startActivity(mi);
+                    }
+                }, Manifest.permission.RECORD_AUDIO);
+    }
+
+    /**
+     * 处理定位权限
+     */
+    private void handleLocation() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_LOCATION_CODE,
+                new IPermissionSuccessCallback() {
+                    @Override
+                    public void OnSucceed(int requestCode, List<String> grantPermissions) {
+                        showToast("获取定位权限成功啦", Toast.LENGTH_LONG);
+                    }
+                }, Manifest.permission.ACCESS_FINE_LOCATION);
+
     }
 
     /**
@@ -123,7 +234,7 @@ public class StudyPermissionActivity extends BaseActivity {
      */
     @TargetApi(Build.VERSION_CODES.ECLAIR)
     private void handleContacts() {
-        PermissionUtil.request(this, PermissionUtil.REQUEST_CONTACTS_CODE, new IPermissionResult() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_CONTACTS_CODE, new IPermissionSuccessCallback() {
             @Override
             public void OnSucceed(int requestCode, List<String> grantPermissions) {
                 startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI), 0);
@@ -168,7 +279,7 @@ public class StudyPermissionActivity extends BaseActivity {
      */
     private void handleCallPhone2() {
         // 申请单个权限。
-        PermissionUtil.request(this, PermissionUtil.REQUEST_PHONE_CODE, new IPermissionResult() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_PHONE_CODE, new IPermissionSuccessCallback() {
             @Override
             public void OnSucceed(int requestCode, List<String> grantPermissions) {
                 SystemUtil.call(StudyPermissionActivity.this, "13657972950");
@@ -176,15 +287,4 @@ public class StudyPermissionActivity extends BaseActivity {
         }, Manifest.permission.CALL_PHONE);
     }
 
-    @PermissionYes(REQUEST_PERMISSION_CALL_PHONE2)
-    private void getPermissionYes(List<String> grantedPermissions) {
-        showToast("电话权限授权成功", Toast.LENGTH_LONG);
-        SystemUtil.call(this, "13657972950");
-    }
-
-    @PermissionNo(REQUEST_PERMISSION_CALL_PHONE2)
-    private void getPermissionNo(List<String> deniedPermissions) {
-        // TODO 申请权限失败。
-        showToast("电话权限授权失败", Toast.LENGTH_LONG);
-    }
 }

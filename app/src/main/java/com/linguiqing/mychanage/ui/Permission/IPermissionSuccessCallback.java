@@ -10,6 +10,6 @@ import java.util.List;
  * ***************************************
  */
 
-public interface IPermissionResult {
+public interface IPermissionSuccessCallback {
     void OnSucceed(int requestCode, List<String> grantPermissions);
 }

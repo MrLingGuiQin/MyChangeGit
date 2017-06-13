@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
-import com.linguiqing.mychanage.ui.Permission.IPermissionResult;
+import com.linguiqing.mychanage.ui.Permission.IPermissionSuccessCallback;
 import com.linguiqing.mychanage.ui.Permission.PermissionUtil;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.ui.selectPhoto.SelectImageDirPopupWindow;
@@ -130,7 +130,7 @@ public class SelectPhotoActivity extends BaseActivity implements SelectImageDirP
     @Override
     public void initData() {
         getScreenHight();
-        PermissionUtil.request(this, PermissionUtil.REQUEST_STORAGE_CODE, new IPermissionResult() {
+        PermissionUtil.request(this, PermissionUtil.REQUEST_STORAGE_CODE, new IPermissionSuccessCallback() {
                     @Override
                     public void OnSucceed(int requestCode, List<String> grantPermissions) {
                         getImages();

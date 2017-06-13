@@ -18,11 +18,17 @@ import java.util.List;
 
 public class MyPermissionListener implements PermissionListener {
     private Activity mActivity;
-    private IPermissionResult mPermissionResult;
+    private IPermissionSuccessCallback mSuccessCallback;
+    private IPermissionResultCallback mResultCallback;
 
-    public MyPermissionListener(Activity activity, IPermissionResult permissionResult) {
+    public MyPermissionListener(Activity activity, IPermissionSuccessCallback successCallback) {
         mActivity = activity;
-        mPermissionResult = permissionResult;
+        mSuccessCallback = successCallback;
+    }
+
+    public MyPermissionListener(Activity activity, IPermissionResultCallback result) {
+        mActivity = activity;
+        mResultCallback = result;
     }
 
 
@@ -33,8 +39,11 @@ public class MyPermissionListener implements PermissionListener {
      */
     @Override
     public void onSucceed(int requestCode, @NonNull List<String> grantPermissions) {
-        if (mPermissionResult != null) {
-            mPermissionResult.OnSucceed(requestCode, grantPermissions);
+        if (mSuccessCallback != null) {
+            mSuccessCallback.OnSucceed(requestCode, grantPermissions);
+        }
+        if (mResultCallback != null) {
+            mResultCallback.onSucceed(requestCode, grantPermissions);
         }
     }
 
@@ -47,6 +56,10 @@ public class MyPermissionListener implements PermissionListener {
      */
     @Override
     public void onFailed(int requestCode, @NonNull List<String> deniedPermissions) {
+        if (mResultCallback != null) {
+            mResultCallback.onFailed(requestCode, deniedPermissions);
+        }
+
         // 是否有不再提示并拒绝的权限。
         if (AndPermission.hasAlwaysDeniedPermission(mActivity, deniedPermissions)) {
             // 用AndPermission默认的提示语。
@@ -60,14 +73,15 @@ public class MyPermissionListener implements PermissionListener {
         // 还是回调我们申请失败，这个时候其实我们是拥有权限的，
         // 建议在失败的回调房中调用AppOpsManager做权限判断
         // if (AndPermission.hasPermission(mActivity, deniedPermissions)) {}
-
-        if (AndPermission.hasPermission(mActivity, deniedPermissions.get(0))) {
+        if (AndPermission.hasPermission(mActivity, deniedPermissions)) {
             // 有权限直接操作
-            if (mPermissionResult != null) {
-                mPermissionResult.OnSucceed(requestCode, deniedPermissions);
+            if (mSuccessCallback != null) {
+                mSuccessCallback.OnSucceed(requestCode, deniedPermissions);
+            }
+            if (mResultCallback != null) {
+                mResultCallback.onSucceed(requestCode, deniedPermissions);
             }
             return;
         }
-
     }
 }

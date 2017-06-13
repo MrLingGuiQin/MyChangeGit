@@ -13,6 +13,7 @@ import com.yanzhenjie.permission.AndPermission;
  */
 
 public class PermissionUtil {
+
     public static final int REQUEST_PHONE_CODE = 0x1001; // 获取拨打电话权限请求码
     public static final int REQUEST_CONTACTS_CODE = 0x1002; // 获取联系人权限请求码
     public static final int REQUEST_LOCATION_CODE = 0x1003; // 获取定位权限请求码
@@ -21,11 +22,25 @@ public class PermissionUtil {
     public static final int REQUEST_SMS_CODE = 0x1006; // 获取短信权限请求码
     public static final int REQUEST_CAMERA_CODE = 0x1007; // 获取照相机权限请求码
     public static final int REQUEST_CALENDAR_CODE = 0x1008; // 获取日历权限请求码
+    public static final int REQUEST_SENSORS_CODE = 0x1009; // 获取传感器权限请求码
 
 
     public static void request(Activity activity,
                                int requestCode,
-                               IPermissionResult result,
+                               IPermissionSuccessCallback result,
+                               String... permission) {
+
+        AndPermission.with(activity)
+                .requestCode(requestCode)
+                .permission(permission)
+                .callback(new MyPermissionListener(activity, result))
+                .rationale(new MyRationaleListener(activity))
+                .start();
+    }
+
+    public static void request(Activity activity,
+                               int requestCode,
+                               IPermissionResultCallback result,
                                String... permission) {
 
         AndPermission.with(activity)
