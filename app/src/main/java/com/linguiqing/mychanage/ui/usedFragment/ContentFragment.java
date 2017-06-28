@@ -24,7 +24,6 @@ public class ContentFragment extends Fragment {
     private TextView mTxtContent;
     public String mContent = "My Change";
 
-
     @Nullable
     @Override
 

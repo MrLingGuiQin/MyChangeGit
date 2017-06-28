@@ -2,41 +2,40 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.linguiqing.mychanage">
 
-    <!--网络权限-->
+    <!-- 网络权限 -->
     <uses-permission android:name="android.permission.INTERNET"/>
-    <!--读取内存卡权限-->
+    <!-- 读取内存卡权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!--读写内存卡权限-->
+    <!-- 读写内存卡权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!--拨打电话权限-->
+    <!-- 拨打电话权限 -->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <!--读取联系人权限-->
+    <!-- 读取联系人权限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <!--读写联系人权限-->
+    <!-- 读写联系人权限 -->
     <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
 
-    <!--位置权限-->
-    <!--通过WiFi或移动基站的方式获取用户错略的经纬度信息，定位精度大概误差在30~1500米-->
+    <!-- 位置权限 -->
+    <!-- 通过WiFi或移动基站的方式获取用户错略的经纬度信息，定位精度大概误差在30~1500米 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <!--通过GPS芯片接收卫星的定位信息，定位精度达10米以内-->
+    <!-- 通过GPS芯片接收卫星的定位信息，定位精度达10米以内 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <!--麦克风录音权限-->
+    <!-- 麦克风录音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <!--读取短信权限-->
+    <!-- 读取短信权限 -->
     <uses-permission android:name="android.permission.READ_SMS"/>
-    <!--发送短信权限-->
+    <!-- 发送短信权限 -->
     <uses-permission android:name="android.permission.SEND_SMS"/>
-    <!--接收短信权限-->
+    <!-- 接收短信权限 -->
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <!--传感器权限权限-->
+    <!-- 传感器权限权限 -->
     <uses-permission android:name="android.permission.BODY_SENSORS"/>
-    <!--照相机权限权限-->
+    <!-- 照相机权限权限 -->
     <uses-permission android:name="android.permission.CAMERAS"/>
-    <!--读取日历权限-->
+    <!-- 读取日历权限 -->
     <uses-permission android:name="android.permission.READ_CALENDAR"/>
-    <!--读写日历权限-->
+    <!-- 读写日历权限 -->
     <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
-
 
     <application
         android:name=".app.MyAppLication"
@@ -75,8 +74,7 @@
                  
                 <category android:name="android.intent.category.BROWSABLE"/>
 
-                <data
-                    android:scheme="ling"/>
+                <data android:scheme="ling"/>
             </intent-filter>
                  
         </activity>
@@ -104,6 +102,14 @@
         <activity
             android:name=".ui.Permission.StudyPermissionActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.richText.StudyRichTextActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.photoView.StudyPhotoViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.WebView.StudyWebViewActivity">
+        </activity>
     </application>
 
 </manifest>

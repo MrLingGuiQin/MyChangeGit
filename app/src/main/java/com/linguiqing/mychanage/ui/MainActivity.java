@@ -14,13 +14,16 @@ import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.interfaces.OnItemClickListener;
 import com.linguiqing.mychanage.ui.Permission.StudyPermissionActivity;
+import com.linguiqing.mychanage.ui.WebView.StudyWebViewActivity;
 import com.linguiqing.mychanage.ui.drawerLayout.DrawerLayoutActivity;
 import com.linguiqing.mychanage.ui.eventbus.StudyEventBusActivity;
 import com.linguiqing.mychanage.ui.handler.StudyHandlerActivity;
+import com.linguiqing.mychanage.ui.photoView.StudyPhotoViewActivity;
 import com.linguiqing.mychanage.ui.productSku.ProductSkuActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewUsedMultiTypeActivity;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
+import com.linguiqing.mychanage.ui.richText.StudyRichTextActivity;
 import com.linguiqing.mychanage.ui.selectPhoto.activity.SelectPhotoActivity;
 import com.linguiqing.mychanage.ui.usedAnimation.StudyAnimationActivity;
 import com.linguiqing.mychanage.ui.usedDataBinging.StudyDataBindingActivity;
@@ -70,7 +73,10 @@ public class MainActivity extends BaseActivity {
         mData.add("Animation动画的使用");
         mData.add("DataBining的使用");
         mData.add("android 6.0 Permission处理");
+        mData.add("TextView  富文本的使用");
         mData.add("Dagger2的使用");
+        mData.add("PhotoView的使用");
+        mData.add("WebView的使用");
     }
 
     @Override
@@ -173,6 +179,18 @@ public class MainActivity extends BaseActivity {
                         break;
                     case 14: // android 6.0 权限处理
                         goToCustomActivity(StudyPermissionActivity.class);
+                        break;
+                    case 15: // textView 富文本的使用
+                        goToCustomActivity(StudyRichTextActivity.class);
+                        break;
+                    case 16: // Dagger2的使用
+//                        goToCustomActivity(StudyPermissionActivity.class);
+                        break;
+                    case 17: // photoView的使用
+                        goToCustomActivity(StudyPhotoViewActivity.class);
+                        break;
+                    case 18: //webView的使用
+                        goToCustomActivity(StudyWebViewActivity.class);
                         break;
                 }
             }

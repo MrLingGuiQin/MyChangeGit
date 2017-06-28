@@ -23,9 +23,10 @@ import com.linguiqing.mychanage.R;
 public class Titlebar extends LinearLayout {
 
 
-    private ImageView mImgGoBack;
+    public  ImageView mImgGoBack;
     private TextView mTxtTile;
     private TextView mTxtOK;
+    public boolean handleGoBack = true;
 
     public Titlebar(Context context, RelativeLayout root) {
         super(context);
@@ -60,7 +61,9 @@ public class Titlebar extends LinearLayout {
         mImgGoBack.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((Activity) getContext()).finish();
+                if (handleGoBack) {
+                    ((Activity) getContext()).finish();
+                }
             }
         });
     }
