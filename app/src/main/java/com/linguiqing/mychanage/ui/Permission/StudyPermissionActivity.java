@@ -82,8 +82,6 @@ public class StudyPermissionActivity extends BaseActivity {
                     showToast("未授权拨打电话哦", Toast.LENGTH_LONG);
                 }
         }
-
-
     }
 
     @OnClick({R.id.btn_call_phone, R.id.btn_call_phone2, R.id.btn_contacts, R.id.btn_location, R.id.btn_microp_phone, R.id.btn_storage, R.id.btn_sms, R.id.btn_sensors, R.id.btn_camera, R.id.btn_calendar})

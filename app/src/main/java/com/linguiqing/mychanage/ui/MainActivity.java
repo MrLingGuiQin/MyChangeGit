@@ -14,7 +14,7 @@ import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.interfaces.OnItemClickListener;
 import com.linguiqing.mychanage.ui.Permission.StudyPermissionActivity;
-import com.linguiqing.mychanage.ui.WebView.StudyWebViewActivity;
+import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.ui.drawerLayout.DrawerLayoutActivity;
 import com.linguiqing.mychanage.ui.eventbus.StudyEventBusActivity;
 import com.linguiqing.mychanage.ui.handler.StudyHandlerActivity;
@@ -22,13 +22,15 @@ import com.linguiqing.mychanage.ui.photoView.StudyPhotoViewActivity;
 import com.linguiqing.mychanage.ui.productSku.ProductSkuActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewUsedMultiTypeActivity;
-import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.ui.richText.StudyRichTextActivity;
 import com.linguiqing.mychanage.ui.selectPhoto.activity.SelectPhotoActivity;
 import com.linguiqing.mychanage.ui.usedAnimation.StudyAnimationActivity;
 import com.linguiqing.mychanage.ui.usedDataBinging.StudyDataBindingActivity;
 import com.linguiqing.mychanage.ui.usedFragment.UsedFragmentActivity;
 import com.linguiqing.mychanage.ui.usedOkHttp.UsedOkHttpActivity;
+import com.linguiqing.mychanage.ui.webView.StudyWXPayAtivity;
+import com.linguiqing.mychanage.ui.webView.StudyWebActivity;
+import com.linguiqing.mychanage.ui.webView.StudyWebFragmentActivity;
 import com.linguiqing.mychanage.util.BaseCustomDialog;
 import com.linguiqing.mychanage.util.DividerItemDecoration;
 
@@ -39,12 +41,10 @@ import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
 
-
     @BindView(R.id.rcy_recyclerview)
     RecyclerView mRecyclerview;
     private List<String> mData;
     private RecylerViewMainAdapter mAdapter;
-
 
     @Override
     public void initView(Bundle savedInstanceState) {
@@ -108,47 +108,13 @@ public class MainActivity extends BaseActivity {
                     case 3:// 仿微信选择图片
                         goToCustomActivity(SelectPhotoActivity.class);
                         break;
-                    case 4: // 自定义dialog1
-                        final BaseCustomDialog dialog = new BaseCustomDialog((Activity) mContext) {
-                            @Override
-                            public View initView() {
-                                View view = View.inflate(mContext, R.layout.dialog_layout, null);
-                                TextView txtMsg = (TextView) view.findViewById(R.id.txt_msg);
-                                txtMsg.setText("66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666 ");
-                                TextView txtOk = (TextView) view.findViewById(R.id.txt_sure);
-                                txtOk.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        showToast("6666660", Toast.LENGTH_SHORT);
-                                        dismiss();
-                                    }
-                                });
-                                return view;
-                            }
-                        };
-                        dialog.show();
 
+                    case 4: // 自定义dialog1
+                        initCoustomDialog();
                         break;
+
                     case 5: // 自定义dialog2
-                        BaseCustomDialog dialog2 = new BaseCustomDialog((Activity) mContext,
-                                R.style.Dialog, 1, -1, Gravity.BOTTOM, false) {
-                            @Override
-                            public View initView() {
-                                View view = View.inflate(mContext, R.layout.dialog_layout, null);
-                                TextView txtMsg = (TextView) view.findViewById(R.id.txt_msg);
-                                txtMsg.setText("66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666 ");
-                                TextView txtOk = (TextView) view.findViewById(R.id.txt_sure);
-                                txtOk.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        showToast("6666660", Toast.LENGTH_SHORT);
-                                        dismiss();
-                                    }
-                                });
-                                return view;
-                            }
-                        };
-                        dialog2.show();
+                        initCoustomDialog2();
                         break;
 
                     case 6: // fragment的使用
@@ -190,11 +156,55 @@ public class MainActivity extends BaseActivity {
                         goToCustomActivity(StudyPhotoViewActivity.class);
                         break;
                     case 18: //webView的使用
-                        goToCustomActivity(StudyWebViewActivity.class);
+//                        goToCustomActivity(StudyWebActivity.class);
+                        goToCustomActivity(StudyWebFragmentActivity.class);
                         break;
                 }
             }
         });
+    }
+
+    private void initCoustomDialog2() {
+        BaseCustomDialog dialog2 = new BaseCustomDialog((Activity) mContext,
+                R.style.Dialog, 1, -1, Gravity.BOTTOM, false) {
+            @Override
+            public View initView() {
+                View view = View.inflate(mContext, R.layout.dialog_layout, null);
+                TextView txtMsg = (TextView) view.findViewById(R.id.txt_msg);
+                txtMsg.setText("66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666 ");
+                TextView txtOk = (TextView) view.findViewById(R.id.txt_sure);
+                txtOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showToast("6666660", Toast.LENGTH_SHORT);
+                        dismiss();
+                    }
+                });
+                return view;
+            }
+        };
+        dialog2.show();
+    }
+
+    private void initCoustomDialog() {
+        final BaseCustomDialog dialog = new BaseCustomDialog((Activity) mContext) {
+            @Override
+            public View initView() {
+                View view = View.inflate(mContext, R.layout.dialog_layout, null);
+                TextView txtMsg = (TextView) view.findViewById(R.id.txt_msg);
+                txtMsg.setText("66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666 ");
+                TextView txtOk = (TextView) view.findViewById(R.id.txt_sure);
+                txtOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        showToast("6666660", Toast.LENGTH_SHORT);
+                        dismiss();
+                    }
+                });
+                return view;
+            }
+        };
+        dialog.show();
     }
 
 }
