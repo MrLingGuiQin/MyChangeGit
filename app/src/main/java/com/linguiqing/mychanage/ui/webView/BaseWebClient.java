@@ -1,4 +1,4 @@
-package com.linguiqing.mychanage.ui.WebView;
+package com.linguiqing.mychanage.ui.webView;
 
 import android.graphics.Bitmap;
 import android.os.Build;

@@ -1,5 +1,6 @@
 package com.linguiqing.mychanage.util;
 
+import com.linguiqing.mychanage.BuildConfig;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 
@@ -12,47 +13,43 @@ import com.orhanobut.logger.Logger;
  */
 
 public class LogUtil {
-    public static boolean isPrintLog = true;
 
-    public static void init(String tag, boolean isPrintLog) {
+    public static void init(String tag) {
         Logger.init(tag)
                 .methodCount(3)                 // default 2
                 .hideThreadInfo()               // default shown
                 .logLevel(LogLevel.FULL)        // FULL 打印输出  、 NONE 不打印
                 .methodOffset(2);            // default 0
         //   .logAdapter(new AndroidLogAdapter()); //default AndroidLogAdapter
-        LogUtil.isPrintLog = isPrintLog;
     }
 
     public static void d(String msg) {
-        if (isPrintLog) {
+        if (BuildConfig.LOG_OPEN) {
             Logger.d(msg);
         }
     }
 
     public static void d(String tag, String msg) {
-        if (isPrintLog) {
+        if (BuildConfig.LOG_OPEN) {
             Logger.t(tag).d(msg);
         }
     }
 
     public static void e(String msg) {
-        if (isPrintLog) {
+        if (BuildConfig.LOG_OPEN) {
             Logger.e(msg);
         }
     }
 
     public static void v(String msg) {
-        if (isPrintLog) {
+        if (BuildConfig.LOG_OPEN) {
             Logger.e(msg);
         }
     }
 
     public static void json(String msg) {
-        if (isPrintLog) {
+        if (BuildConfig.LOG_OPEN) {
             Logger.json(msg);
         }
     }
-
-
 }

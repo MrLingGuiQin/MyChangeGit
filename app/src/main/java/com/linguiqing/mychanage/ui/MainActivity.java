@@ -23,13 +23,12 @@ import com.linguiqing.mychanage.ui.productSku.ProductSkuActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewUsedMultiTypeActivity;
 import com.linguiqing.mychanage.ui.richText.StudyRichTextActivity;
+import com.linguiqing.mychanage.ui.rxjava.StudyRxJavaActivity;
 import com.linguiqing.mychanage.ui.selectPhoto.activity.SelectPhotoActivity;
 import com.linguiqing.mychanage.ui.usedAnimation.StudyAnimationActivity;
 import com.linguiqing.mychanage.ui.usedDataBinging.StudyDataBindingActivity;
 import com.linguiqing.mychanage.ui.usedFragment.UsedFragmentActivity;
 import com.linguiqing.mychanage.ui.usedOkHttp.UsedOkHttpActivity;
-import com.linguiqing.mychanage.ui.webView.StudyWXPayAtivity;
-import com.linguiqing.mychanage.ui.webView.StudyWebActivity;
 import com.linguiqing.mychanage.ui.webView.StudyWebFragmentActivity;
 import com.linguiqing.mychanage.util.BaseCustomDialog;
 import com.linguiqing.mychanage.util.DividerItemDecoration;
@@ -77,6 +76,8 @@ public class MainActivity extends BaseActivity {
         mData.add("Dagger2的使用");
         mData.add("PhotoView的使用");
         mData.add("WebView的使用");
+        mData.add("RxJava的使用");
+        mData.add("SmartRefreshLayout的使用");
     }
 
     @Override
@@ -158,6 +159,12 @@ public class MainActivity extends BaseActivity {
                     case 18: //webView的使用
 //                        goToCustomActivity(StudyWebActivity.class);
                         goToCustomActivity(StudyWebFragmentActivity.class);
+                        break;
+                    case 19: //RxJava的使用
+                        goToCustomActivity(StudyRxJavaActivity.class);
+                        break;
+                    case 20: //SmartRefreshLayout的使用
+//                        goToCustomActivity(StudyRxJavaActivity.class);
                         break;
                 }
             }

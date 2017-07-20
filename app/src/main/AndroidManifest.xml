@@ -113,7 +113,7 @@
 
         <activity android:name=".ui.webView.StudyWXPayAtivity"/>
         <activity android:name=".ui.webView.StudyWebActivity"/>
-        <activity android:name=".ui.webView.StudyWebFragmentActivity"/>
+        <activity android:name=".ui.rxjava.StudyRxJavaActivity"/>
 
     </application>
 

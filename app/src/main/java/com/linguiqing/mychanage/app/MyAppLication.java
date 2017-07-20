@@ -16,6 +16,6 @@ public class MyAppLication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        LogUtil.init("My Change", true);
+        LogUtil.init("My Change");
     }
 }
