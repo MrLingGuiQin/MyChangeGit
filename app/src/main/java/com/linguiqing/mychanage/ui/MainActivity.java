@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.interfaces.OnItemClickListener;
-import com.linguiqing.mychanage.ui.Permission.StudyPermissionActivity;
+import com.linguiqing.mychanage.ui.permission.StudyPermissionActivity;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.ui.drawerLayout.DrawerLayoutActivity;
 import com.linguiqing.mychanage.ui.eventbus.StudyEventBusActivity;

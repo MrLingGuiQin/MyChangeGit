@@ -88,6 +88,27 @@
                 android:layout_height="wrap_content"
                 android:text="自定义观察者模式"
                 android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/btn_study_rxjava_repetition_click"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="处理按钮的重复点击"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:id="@+id/btn_study_rxjava_merge_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Merge 合并数据"
+                android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/btn_study_rxjava_interval_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="开始倒计时"
+                android:textAllCaps="false"/>
+
+
 
         </LinearLayout>
     </ScrollView>

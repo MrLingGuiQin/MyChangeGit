@@ -1,8 +1,7 @@
-package com.linguiqing.mychanage.ui.Permission;
+package com.linguiqing.mychanage.ui.permission;
 
 import android.app.Activity;
 
-import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
 import com.yanzhenjie.permission.RationaleListener;
 

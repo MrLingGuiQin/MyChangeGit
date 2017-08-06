@@ -1,17 +1,25 @@
 package com.linguiqing.mychanage.ui.rxjava;
 
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.util.LogUtil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
@@ -44,6 +52,11 @@ public class StudyRxJavaActivity extends BaseActivity {
 
     @BindView(R.id.btn_study_rxjava_set_drawable)
     Button mBtnSetDrawable;
+
+    @BindView(R.id.btn_study_rxjava_repetition_click)
+    Button mBtnRepetitionClick;
+    @BindView(R.id.btn_study_rxjava_interval_time)
+    Button mBtnIntervalTime;
     private boolean mIsShowDrawable;
 
     @Override
@@ -60,7 +73,7 @@ public class StudyRxJavaActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-    LogUtil.d("StudyRxJavaActivity 初始化啦啦啦");
+        setBtnRepetitionClick();
     }
 
 
@@ -380,9 +393,116 @@ public class StudyRxJavaActivity extends BaseActivity {
         subject.change("我在大保健");
     }
 
+
+    /**
+     * 处理按钮的重复点击  5秒只做一次处理
+     */
+    private void setBtnRepetitionClick() {
+        RxView.clicks(mBtnRepetitionClick).throttleFirst(5, TimeUnit.SECONDS).subscribe(new Observer<Object>() {
+            @Override
+            public void onSubscribe(@NonNull Disposable d) {
+
+            }
+
+            @Override
+            public void onNext(@NonNull Object o) {
+                LogUtil.d("我在暴力点击，但是我不怕拉拉---");
+            }
+
+            @Override
+            public void onError(@NonNull Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+
+    }
+
+    /**
+     * 合并两份数据
+     */
+    private void setMergeTwoData() {
+        Observable.merge(getLocationData(), getNetData()).subscribe(new Consumer<List<String>>() {
+            @Override
+            public void accept(@NonNull List<String> strings) throws Exception {
+                LogUtil.e("输出合并后的数据 =  " + strings.toString());
+                // 输出结果调用2次：
+                // 输出合并后的数据 =  [我是小明, 我是小王]
+                // 输出合并后的数据 =  [我是小凌, 我是小杨]
+            }
+        });
+    }
+
+    // 获取本地数据
+    private Observable<List<String>> getLocationData() {
+        List<String> locationList = new ArrayList();
+        locationList.add("我是小明");
+        locationList.add("我是小王");
+        return Observable.just(locationList);
+    }
+
+    //模拟获取网络数据
+    private Observable<List<String>> getNetData() {
+        List<String> netList = new ArrayList();
+        netList.add("我是小凌");
+        netList.add("我是小杨");
+        return Observable.just(netList);
+    }
+
+    /**
+     * 开始倒计时
+     */
+    private void setStartIntervalTime() {
+        int count = 10;
+        Observable.interval(0, 1, TimeUnit.SECONDS)
+                .take(count+1)
+                .map(new Function<Long, Long>() {
+                    @Override
+                    public Long apply(@NonNull Long aLong) throws Exception {
+                        return count - aLong;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(@NonNull Disposable disposable) throws Exception {
+                        mBtnIntervalTime.setEnabled(false);
+                        LogUtil.e("doOnSubscribe 执行了");
+                    }
+                })
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull Long aLong) {
+                        LogUtil.e("onNext 执行了");
+                        mBtnIntervalTime.setText("剩余: " + aLong + " s");
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        LogUtil.e("onComplete 执行了");
+                        mBtnIntervalTime.setEnabled(true);
+                        mBtnIntervalTime.setText("开始倒计时");
+                    }
+                });
+    }
+
     @OnClick({R.id.btn_study_rxjava_hello_word, R.id.btn_study_rxjava_print_string, R.id.btn_study_rxjava_set_drawable, R.id.btn_study_rxjava_used_scheduler,
             R.id.btn_study_rxjava_used_map, R.id.btn_study_rxjava_used_flatMap, R.id.btn_study_rxjava_used_timer, R.id.btn_study_rxjava_used_interval,
-            R.id.btn_study_rxjava_used_simple})
+            R.id.btn_study_rxjava_used_simple, R.id.btn_study_rxjava_merge_data, R.id.btn_study_rxjava_interval_time})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.btn_study_rxjava_hello_word:
@@ -411,6 +531,13 @@ public class StudyRxJavaActivity extends BaseActivity {
                 break;
             case R.id.btn_study_rxjava_used_simple:
                 setCustomSimple();
+                break;
+
+            case R.id.btn_study_rxjava_merge_data: // 合并数据
+                setMergeTwoData();
+                break;
+            case R.id.btn_study_rxjava_interval_time: // 开始倒计时
+                setStartIntervalTime();
                 break;
         }
 

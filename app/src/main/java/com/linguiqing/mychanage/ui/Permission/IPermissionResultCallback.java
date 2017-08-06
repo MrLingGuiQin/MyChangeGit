@@ -1,4 +1,4 @@
-package com.linguiqing.mychanage.ui.Permission;
+package com.linguiqing.mychanage.ui.permission;
 
 import java.util.List;
 

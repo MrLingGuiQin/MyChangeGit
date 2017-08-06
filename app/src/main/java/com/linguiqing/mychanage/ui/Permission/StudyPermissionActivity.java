@@ -1,4 +1,4 @@
-package com.linguiqing.mychanage.ui.Permission;
+package com.linguiqing.mychanage.ui.permission;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -21,8 +21,6 @@ import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.util.SystemUtil;
-import com.yanzhenjie.permission.PermissionNo;
-import com.yanzhenjie.permission.PermissionYes;
 
 import java.util.List;
 

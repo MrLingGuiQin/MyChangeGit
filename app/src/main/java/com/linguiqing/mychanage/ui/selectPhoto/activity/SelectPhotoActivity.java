@@ -23,8 +23,8 @@ import android.widget.Toast;
 
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
-import com.linguiqing.mychanage.ui.Permission.IPermissionSuccessCallback;
-import com.linguiqing.mychanage.ui.Permission.PermissionUtil;
+import com.linguiqing.mychanage.ui.permission.IPermissionSuccessCallback;
+import com.linguiqing.mychanage.ui.permission.PermissionUtil;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.ui.selectPhoto.SelectImageDirPopupWindow;
 import com.linguiqing.mychanage.ui.selectPhoto.adapter.SelectPhotoAdapter;

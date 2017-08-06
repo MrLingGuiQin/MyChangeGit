@@ -1,4 +1,4 @@
-package com.linguiqing.mychanage.ui.Permission;
+package com.linguiqing.mychanage.ui.permission;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
