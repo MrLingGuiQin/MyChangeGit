@@ -113,6 +113,8 @@
         <activity android:name=".ui.rxjava.StudyRxJavaActivity"/>
         <activity android:name=".ui.smartRefresh.SimpleProductListActivity">
         </activity>
+        <activity android:name=".ui.rxjava.RxImageLoadActivity">
+        </activity>
     </application>
 
 </manifest>

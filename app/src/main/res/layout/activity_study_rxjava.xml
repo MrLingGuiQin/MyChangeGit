@@ -107,6 +107,12 @@
                 android:layout_height="wrap_content"
                 android:text="开始倒计时"
                 android:textAllCaps="false"/>
+            <Button
+                android:id="@+id/btn_study_rxjava_image_load"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="简单的图片加载"
+                android:textAllCaps="false"/>
 
 
 

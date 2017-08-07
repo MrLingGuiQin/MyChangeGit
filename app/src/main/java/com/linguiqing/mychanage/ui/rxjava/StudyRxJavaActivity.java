@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
 import com.jakewharton.rxbinding2.view.RxView;
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
@@ -454,7 +455,7 @@ public class StudyRxJavaActivity extends BaseActivity {
     private void setStartIntervalTime() {
         int count = 10;
         Observable.interval(0, 1, TimeUnit.SECONDS)
-                .take(count+1)
+                .take(count + 1)
                 .map(new Function<Long, Long>() {
                     @Override
                     public Long apply(@NonNull Long aLong) throws Exception {
@@ -497,7 +498,8 @@ public class StudyRxJavaActivity extends BaseActivity {
 
     @OnClick({R.id.btn_study_rxjava_hello_word, R.id.btn_study_rxjava_print_string, R.id.btn_study_rxjava_set_drawable, R.id.btn_study_rxjava_used_scheduler,
             R.id.btn_study_rxjava_used_map, R.id.btn_study_rxjava_used_flatMap, R.id.btn_study_rxjava_used_timer, R.id.btn_study_rxjava_used_interval,
-            R.id.btn_study_rxjava_used_simple, R.id.btn_study_rxjava_merge_data, R.id.btn_study_rxjava_interval_time})
+            R.id.btn_study_rxjava_used_simple, R.id.btn_study_rxjava_merge_data, R.id.btn_study_rxjava_interval_time,
+            R.id.btn_study_rxjava_image_load})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.btn_study_rxjava_hello_word:
@@ -533,6 +535,9 @@ public class StudyRxJavaActivity extends BaseActivity {
                 break;
             case R.id.btn_study_rxjava_interval_time: // 开始倒计时
                 setStartIntervalTime();
+                break;
+            case R.id.btn_study_rxjava_image_load: // 简单的图片加载器
+                goToCustomActivity(RxImageLoadActivity.class);
                 break;
         }
 
