@@ -25,6 +25,7 @@ import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewUsedMu
 import com.linguiqing.mychanage.ui.richText.StudyRichTextActivity;
 import com.linguiqing.mychanage.ui.rxjava.StudyRxJavaActivity;
 import com.linguiqing.mychanage.ui.selectPhoto.activity.SelectPhotoActivity;
+import com.linguiqing.mychanage.ui.smartRefresh.SimpleProductListActivity;
 import com.linguiqing.mychanage.ui.usedAnimation.StudyAnimationActivity;
 import com.linguiqing.mychanage.ui.usedDataBinging.StudyDataBindingActivity;
 import com.linguiqing.mychanage.ui.usedFragment.UsedFragmentActivity;
@@ -32,6 +33,7 @@ import com.linguiqing.mychanage.ui.usedOkHttp.UsedOkHttpActivity;
 import com.linguiqing.mychanage.ui.webView.StudyWebFragmentActivity;
 import com.linguiqing.mychanage.util.BaseCustomDialog;
 import com.linguiqing.mychanage.util.DividerItemDecoration;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -164,7 +166,7 @@ public class MainActivity extends BaseActivity {
                         goToCustomActivity(StudyRxJavaActivity.class);
                         break;
                     case 20: //SmartRefreshLayout的使用
-//                        goToCustomActivity(StudyRxJavaActivity.class);
+                        goToCustomActivity(SimpleProductListActivity.class);
                         break;
                 }
             }
