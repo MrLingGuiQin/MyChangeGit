@@ -60,13 +60,13 @@ public class CalendarRecylerViewActivity extends BaseActivity {
                 int spanSize = lm.getSpanCount(); // 列数 7
 
                 if (spanIndex == 0) {
-                    outRect.left = 6;
+                    outRect.left = 2;
                 }
 
                 // 获取item的索引值 0 ~ mList.size -1
                 int childLayoutPosition = parent.getChildLayoutPosition(view);
                 if (childLayoutPosition < spanSize) {
-                    outRect.top = 6;
+                    outRect.top = 2;
                 }
                 LogUtil.e("spanIndex = " + spanIndex + "spanSize = " + spanSize
                         + "childLayoutPosition = " + childLayoutPosition);
