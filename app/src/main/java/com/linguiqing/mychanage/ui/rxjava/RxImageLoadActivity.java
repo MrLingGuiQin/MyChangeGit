@@ -7,6 +7,7 @@ import android.widget.Button;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
+import com.linguiqing.mychanage.ui.rxjava.rxImageLoad.RxImageLoad;
 import com.linguiqing.mychanage.util.LogUtil;
 
 import butterknife.BindView;
@@ -31,6 +32,7 @@ public class RxImageLoadActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
+//        RxImageLoad.with(mContext).
         Observable<String> memoryObservable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
@@ -56,7 +58,6 @@ public class RxImageLoadActivity extends BaseActivity {
             }
         });
 
-
         RxView.clicks(mBtnRxImageLoad).subscribe(new Consumer<Object>() {
             @Override
             public void accept(@NonNull Object o) throws Exception {
@@ -74,8 +75,6 @@ public class RxImageLoadActivity extends BaseActivity {
                                 LogUtil.d(s);
                             }
                         });
-
-
             }
         });
     }
