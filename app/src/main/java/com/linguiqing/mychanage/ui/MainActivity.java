@@ -20,6 +20,7 @@ import com.linguiqing.mychanage.ui.eventbus.StudyEventBusActivity;
 import com.linguiqing.mychanage.ui.handler.StudyHandlerActivity;
 import com.linguiqing.mychanage.ui.photoView.StudyPhotoViewActivity;
 import com.linguiqing.mychanage.ui.productSku.ProductSkuActivity;
+import com.linguiqing.mychanage.ui.recylerView.activity.CalendarRecylerViewActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewUsedMultiTypeActivity;
 import com.linguiqing.mychanage.ui.richText.StudyRichTextActivity;
@@ -166,7 +167,8 @@ public class MainActivity extends BaseActivity {
                         goToCustomActivity(StudyRxJavaActivity.class);
                         break;
                     case 20: //SmartRefreshLayout的使用
-                        goToCustomActivity(SimpleProductListActivity.class);
+//                        goToCustomActivity(SimpleProductListActivity.class);
+                        goToCustomActivity(CalendarRecylerViewActivity.class);
                         break;
                 }
             }

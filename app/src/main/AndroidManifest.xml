@@ -115,6 +115,8 @@
         </activity>
         <activity android:name=".ui.rxjava.RxImageLoadActivity">
         </activity>
+        <activity android:name=".ui.recylerView.activity.CalendarRecylerViewActivity">
+        </activity>
     </application>
 
 </manifest>

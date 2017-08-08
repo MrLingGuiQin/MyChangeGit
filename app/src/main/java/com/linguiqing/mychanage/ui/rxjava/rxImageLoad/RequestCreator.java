@@ -18,7 +18,7 @@ public class RequestCreator {
 
     public RequestCreator() {
         mMemoryCacheObservable = new MemoryCacheObservable();
-        mDiskCacheObservable = new DiskCacheObservable();
+//        mDiskCacheObservable = new DiskCacheObservable();
         mNetWorkCacheObservable = new NetWorkCacheObservable();
     }
 
