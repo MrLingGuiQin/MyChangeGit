@@ -24,12 +24,12 @@
         android:layout_width="17dp"
         android:layout_height="13dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sign_in_signed"
-        android:layout_marginStart="4dp"/>
+        app:srcCompat="@drawable/sign_in_signed"/>
 
     <ImageView
         android:id="@+id/img_sign_in_no_signed"
@@ -39,7 +39,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="8dp"
         android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -52,12 +52,11 @@
         android:layout_height="20dp"
         android:layout_marginLeft="6dp"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/img_singn_in_signed"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/sign_in_yes_signed"/>
 
     <ImageView
@@ -75,19 +74,19 @@
         android:id="@+id/txt_sign_money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
         android:layout_marginEnd="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginTop="30dp"
         android:text="xx代金劵"
         android:textColor="#ff2b2e"
         android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/img_sign_in_doub"
