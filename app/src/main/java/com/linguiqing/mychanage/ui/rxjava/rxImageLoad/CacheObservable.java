@@ -5,7 +5,9 @@ import java.net.MulticastSocket;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * ***************************************
@@ -28,7 +30,7 @@ public abstract class CacheObservable {
                     e.onComplete();
                 }
             }
-        });
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public abstract Image getDataFromCache(String url);

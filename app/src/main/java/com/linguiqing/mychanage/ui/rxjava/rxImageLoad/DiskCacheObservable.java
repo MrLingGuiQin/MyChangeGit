@@ -4,10 +4,23 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.linguiqing.mychanage.util.LogUtil;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * ***************************************
@@ -30,15 +43,19 @@ public class DiskCacheObservable extends CacheObservable {
     @Override
     public Image getDataFromCache(String url) {
         Bitmap bitmap = getDataFromDiskLruCache(url);
-        if (bitmap != null) {
-            return new Image(url, bitmap);
-        }
-        return null;
+        return new Image(url, bitmap);
     }
 
     @Override
     public void putDataToCache(Image image) {
-
+        // 指定在io子线程执行耗时操作
+        Observable.create(new ObservableOnSubscribe<Image>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Image> e) throws Exception {
+                LogUtil.e("putDataTo Disk");
+                putDataToDiskLruCache(image);
+            }
+        }).subscribeOn(Schedulers.io()).subscribe();
     }
 
 
@@ -96,4 +113,56 @@ public class DiskCacheObservable extends CacheObservable {
         }
         return bitmap;
     }
+
+
+    public void putDataToDiskLruCache(Image image) {
+        try {
+            DiskLruCache.Editor edit = mDiskLruCache.edit(DiskUtil.hashKeyForDisk(image.getUrl()));
+            OutputStream outputStream = edit.newOutputStream(0);
+            if (downloadUrlToStream(image.getUrl(), outputStream)) {
+                edit.commit();
+            } else {
+                edit.abort();
+            }
+            mDiskLruCache.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private boolean downloadUrlToStream(String urlString, OutputStream outputStream) {
+        HttpURLConnection urlConnection = null;
+        BufferedOutputStream out = null;
+        BufferedInputStream in = null;
+        try {
+            final URL url = new URL(urlString);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            in = new BufferedInputStream(urlConnection.getInputStream(), 8 * 1024);
+            out = new BufferedOutputStream(outputStream, 8 * 1024);
+            int b;
+            while ((b = in.read()) != -1) {
+                out.write(b);
+            }
+            return true;
+        } catch (final IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+            try {
+                if (out != null) {
+                    out.close();
+                }
+                if (in != null) {
+                    in.close();
+                }
+            } catch (final IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
 }

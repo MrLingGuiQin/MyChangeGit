@@ -3,8 +3,11 @@ package com.linguiqing.mychanage.ui.rxjava.rxImageLoad;
 import android.content.Context;
 import android.widget.ImageView;
 
+import com.linguiqing.mychanage.util.LogUtil;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Predicate;
@@ -24,8 +27,8 @@ public class RxImageLoad {
     private ImageView mImageView;
     private final RequestCreator mRequestCreator;
 
-    private RxImageLoad() {
-        mRequestCreator = new RequestCreator();
+    private RxImageLoad(Builder builder) {
+        mRequestCreator = new RequestCreator(builder.mContext);
     }
 
     public static RxImageLoad with(Context context) {
@@ -41,13 +44,19 @@ public class RxImageLoad {
 
     public RxImageLoad load(String url) {
         mUrl = url;
-        Observable.concat(mRequestCreator.getMemoryCacheObservable(url),
-                mRequestCreator.getDiskCacheObservable(url),
-                mRequestCreator.getNetWorkCacheObservable(url))
+        return mSingleton;
+    }
+
+    public RxImageLoad into(ImageView imageView) {
+        mImageView = imageView;
+
+        Observable.concat(mRequestCreator.getImagFromMemory(mUrl),
+                mRequestCreator.getImageFromDisk(mUrl),
+                mRequestCreator.getImageFromNetWork(mUrl))
                 .filter(new Predicate<Image>() {
                     @Override
                     public boolean test(@NonNull Image image) throws Exception {
-                        return image != null;
+                        return image.getBitmap() != null;
                     }
                 })
                 .firstElement().toObservable()
@@ -59,17 +68,17 @@ public class RxImageLoad {
 
                     @Override
                     public void onNext(@NonNull Image image) {
-
+                        mImageView.setImageBitmap(image.getBitmap());
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-
+                        LogUtil.e(e.toString());
                     }
 
                     @Override
                     public void onComplete() {
-
+                        LogUtil.e("RxImageLoad load onComplete");
                     }
                 });
 
@@ -77,21 +86,15 @@ public class RxImageLoad {
         return mSingleton;
     }
 
-    public RxImageLoad into(ImageView imageView) {
-        mImageView = imageView;
-
-        return mSingleton;
-    }
-
     public static class Builder {
-        private Context mContext;
+        public Context mContext;
 
         public Builder(Context context) {
             mContext = context;
         }
 
         private RxImageLoad build() {
-            return new RxImageLoad();
+            return new RxImageLoad(this);
         }
 
     }

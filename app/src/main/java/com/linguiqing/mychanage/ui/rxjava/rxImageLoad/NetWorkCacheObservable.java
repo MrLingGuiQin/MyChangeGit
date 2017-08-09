@@ -17,13 +17,12 @@ import java.net.URLConnection;
  */
 
 public class NetWorkCacheObservable extends CacheObservable {
+
     @Override
     public Image getDataFromCache(String url) {
+
         Bitmap bitmap = loadImage(url);
-        if (bitmap != null) {
-            return new Image(url, bitmap);
-        }
-        return null;
+        return new Image(url, bitmap);
     }
 
     @Override
