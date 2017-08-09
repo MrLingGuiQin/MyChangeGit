@@ -1,21 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
-    android:orientation="vertical">
+    android:background="@color/white">
 
     <TextView
-        android:id="@+id/textView666"
+        android:id="@+id/txt_date_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
-        android:text="12"/>
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="1"
+        android:textColor="#999999"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/img_singn_in_signed"
+        android:layout_width="17dp"
+        android:layout_height="13dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sign_in_signed"
+        android:layout_marginStart="4dp"/>
+
+    <ImageView
+        android:id="@+id/img_sign_in_no_signed"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="7dp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sign_in_no_signed"/>
+
+    <ImageView
+        android:id="@+id/img_sign_in_yes_signed"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sign_in_yes_signed"/>
+
+    <ImageView
+        android:id="@+id/img_sign_in_today"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintLeft_toLeftOf="@+id/txt_date_num"
+        app:layout_constraintTop_toBottomOf="@+id/txt_date_num"
+        app:srcCompat="@drawable/sign_in_today"/>
+
+    <TextView
+        android:id="@+id/txt_sign_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginBottom="6dp"
+        android:text="xx代金劵"
+        android:textColor="#ff2b2e"
+        android:textSize="10sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/img_sign_in_doub"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="17dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sign_in_doub"/>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -8,6 +8,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rcy_calender_views"
         android:layout_width="match_parent"
-        android:layout_margin="15dp"
+        android:layout_margin="5dp"
         android:layout_height="wrap_content"/>
 </LinearLayout>

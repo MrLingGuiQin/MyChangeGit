@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.linguiqing.mychanage.R;
@@ -40,7 +41,7 @@ public class CalendarRecylerViewActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mRecylerView.setBackgroundColor(Color.parseColor("#000000"));
+        mRecylerView.setBackgroundColor(Color.parseColor("#d9d9d9"));
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(mContext, 7, GridLayoutManager.VERTICAL, false);
         mRecylerView.setLayoutManager(mGridLayoutManager);
         MyAdapter adapter = new MyAdapter();
@@ -85,7 +86,53 @@ public class CalendarRecylerViewActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(MyViewHold holder, int position) {
-            holder.mTextView.setText(mList.get(position));
+            holder.mTxtDataNum.setText(mList.get(position));
+            holder.mTxtDataNum.setVisibility(View.INVISIBLE);
+            holder.mTxtSignMoney.setVisibility(View.INVISIBLE);
+            holder.mImgSignInSigned.setVisibility(View.INVISIBLE);
+            holder.mImgSignInNoSigned.setVisibility(View.INVISIBLE);
+            holder.mImgSignInYesSigned.setVisibility(View.INVISIBLE);
+            holder.mImgSignInToday.setVisibility(View.INVISIBLE);
+            holder.mImgSignInDoub.setVisibility(View.INVISIBLE);
+
+            int i = (position + 1) % 7;
+            switch (i) {
+                case 1:
+                    holder.mTxtDataNum.setVisibility(View.VISIBLE);
+                    break;
+
+                case 2:
+                    holder.mTxtDataNum.setVisibility(View.VISIBLE);
+                    holder.mImgSignInSigned.setVisibility(View.VISIBLE);
+                    break;
+
+                case 3:
+                    holder.mTxtDataNum.setVisibility(View.VISIBLE);
+                    holder.mImgSignInYesSigned.setVisibility(View.VISIBLE);
+                    break;
+
+                case 4:
+                    holder.mImgSignInNoSigned.setVisibility(View.VISIBLE);
+                    break;
+
+                case 5:
+                    holder.mImgSignInNoSigned.setVisibility(View.VISIBLE);
+                    holder.mTxtSignMoney.setVisibility(View.VISIBLE);
+                    break;
+
+                case 6:
+                    holder.mTxtDataNum.setVisibility(View.VISIBLE);
+                    holder.mImgSignInToday.setVisibility(View.VISIBLE);
+                    break;
+
+                case 0:
+                    holder.mTxtDataNum.setVisibility(View.VISIBLE);
+                    holder.mImgSignInDoub.setVisibility(View.VISIBLE);
+                    break;
+
+            }
+
+
         }
 
 
@@ -98,13 +145,25 @@ public class CalendarRecylerViewActivity extends BaseActivity {
     }
 
     public class MyViewHold extends RecyclerView.ViewHolder {
-        TextView mTextView;
+
+        TextView mTxtDataNum; // 日期编号
+        TextView mTxtSignMoney;  // xx 代金卷
+        ImageView mImgSignInSigned; // 已签到对勾
+        ImageView mImgSignInNoSigned; // 未签到补签
+        ImageView mImgSignInYesSigned; // 未签到已补签
+        ImageView mImgSignInToday; // 签到今天标记
+        ImageView mImgSignInDoub; //
 
         public MyViewHold(View itemView) {
             super(itemView);
-            mTextView = (TextView) itemView.findViewById(R.id.textView666);
+            mTxtDataNum = (TextView) itemView.findViewById(R.id.txt_date_num);
+            mTxtSignMoney = (TextView) itemView.findViewById(R.id.txt_sign_money);
+            mImgSignInSigned = (ImageView) itemView.findViewById(R.id.img_singn_in_signed);
+            mImgSignInNoSigned = (ImageView) itemView.findViewById(R.id.img_sign_in_no_signed);
+            mImgSignInYesSigned = (ImageView) itemView.findViewById(R.id.img_sign_in_yes_signed);
+            mImgSignInToday = (ImageView) itemView.findViewById(R.id.img_sign_in_today);
+            mImgSignInDoub = (ImageView) itemView.findViewById(R.id.img_sign_in_doub);
         }
     }
-
 
 }
