@@ -111,11 +111,11 @@
         <activity android:name=".ui.webView.StudyWXPayAtivity"/>
         <activity android:name=".ui.webView.StudyWebActivity"/>
         <activity android:name=".ui.rxjava.StudyRxJavaActivity"/>
-        <activity android:name=".ui.smartRefresh.SimpleProductListActivity">
-        </activity>
-        <activity android:name=".ui.rxjava.RxImageLoadActivity">
-        </activity>
-        <activity android:name=".ui.recylerView.activity.CalendarRecylerViewActivity">
+        <activity android:name=".ui.smartRefresh.SimpleProductListActivity"/>
+        <activity android:name=".ui.rxjava.RxImageLoadActivity"/>
+        <activity android:name=".ui.recylerView.activity.CalendarRecylerViewActivity"/>
+        <activity android:name=".ui.retrofit.StudyRetrofitActivity"/>
+        <activity android:name=".ui.dagger.StudyDaggerActivity">
         </activity>
     </application>
 

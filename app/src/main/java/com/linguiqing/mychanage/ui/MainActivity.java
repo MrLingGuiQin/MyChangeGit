@@ -13,16 +13,16 @@ import android.widget.Toast;
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.interfaces.OnItemClickListener;
-import com.linguiqing.mychanage.ui.permission.StudyPermissionActivity;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.ui.drawerLayout.DrawerLayoutActivity;
 import com.linguiqing.mychanage.ui.eventbus.StudyEventBusActivity;
 import com.linguiqing.mychanage.ui.handler.StudyHandlerActivity;
+import com.linguiqing.mychanage.ui.permission.StudyPermissionActivity;
 import com.linguiqing.mychanage.ui.photoView.StudyPhotoViewActivity;
 import com.linguiqing.mychanage.ui.productSku.ProductSkuActivity;
-import com.linguiqing.mychanage.ui.recylerView.activity.CalendarRecylerViewActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewUsedMultiTypeActivity;
+import com.linguiqing.mychanage.ui.retrofit.StudyRetrofitActivity;
 import com.linguiqing.mychanage.ui.richText.StudyRichTextActivity;
 import com.linguiqing.mychanage.ui.rxjava.StudyRxJavaActivity;
 import com.linguiqing.mychanage.ui.selectPhoto.activity.SelectPhotoActivity;
@@ -34,7 +34,6 @@ import com.linguiqing.mychanage.ui.usedOkHttp.UsedOkHttpActivity;
 import com.linguiqing.mychanage.ui.webView.StudyWebFragmentActivity;
 import com.linguiqing.mychanage.util.BaseCustomDialog;
 import com.linguiqing.mychanage.util.DividerItemDecoration;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +79,7 @@ public class MainActivity extends BaseActivity {
         mData.add("PhotoView的使用");
         mData.add("WebView的使用");
         mData.add("RxJava的使用");
+        mData.add("Retrofit的使用");
         mData.add("SmartRefreshLayout的使用");
     }
 
@@ -166,9 +166,13 @@ public class MainActivity extends BaseActivity {
                     case 19: //RxJava的使用
                         goToCustomActivity(StudyRxJavaActivity.class);
                         break;
-                    case 20: //SmartRefreshLayout的使用
-//                        goToCustomActivity(SimpleProductListActivity.class);
-                        goToCustomActivity(CalendarRecylerViewActivity.class);
+                    case 20: //Retrofit的使用
+                        goToCustomActivity(StudyRetrofitActivity.class);
+                        break;
+
+                    case 21:  //SmartRefreshLayout的使用
+                        goToCustomActivity(SimpleProductListActivity.class);
+//                        goToCustomActivity(CalendarRecylerViewActivity.class);
                         break;
                 }
             }

@@ -47,7 +47,7 @@ public class DiskCacheObservable extends CacheObservable {
     }
 
     @Override
-    public void putDataToCache(Image image) {
+    public void putDataToCache(final Image image) {
         // 指定在io子线程执行耗时操作
         Observable.create(new ObservableOnSubscribe<Image>() {
             @Override

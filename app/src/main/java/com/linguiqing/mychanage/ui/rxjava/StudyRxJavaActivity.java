@@ -348,7 +348,7 @@ public class StudyRxJavaActivity extends BaseActivity {
      * 使用轮播定时输出toast
      */
     private void setUseInterval() {
-        CompositeDisposable disposable = new CompositeDisposable();
+        final CompositeDisposable disposable = new CompositeDisposable();
         disposable.add(Observable.interval(0, 2, TimeUnit.SECONDS).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableObserver<Long>() {
@@ -453,7 +453,7 @@ public class StudyRxJavaActivity extends BaseActivity {
      * 开始倒计时
      */
     private void setStartIntervalTime() {
-        int count = 10;
+        final int count = 10;
         Observable.interval(0, 1, TimeUnit.SECONDS)
                 .take(count + 1)
                 .map(new Function<Long, Long>() {
