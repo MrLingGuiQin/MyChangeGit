@@ -35,7 +35,7 @@ public class ApiServer {
         // 模拟云端保存数据
         RequestBody body = RequestBody.create(JSON, "");
         Request request = new Request.Builder()
-                .url("")
+                .url("http://www.baidu.com")
                 .post(body)
                 .build();
 
@@ -43,12 +43,15 @@ public class ApiServer {
                 .enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-
+                        LogUtil.e("onFailure=====");
+                        LogUtil.e(call.toString());
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
 
+                        LogUtil.e("onResponse=====");
+                        LogUtil.e(response.body().toString());
                     }
                 });
 
