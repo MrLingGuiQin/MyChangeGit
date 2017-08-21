@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 
-//import javax.inject.Inject;
+import javax.inject.Inject;
 
 
 /**
@@ -18,8 +18,8 @@ import com.linguiqing.mychanage.base.BaseActivity;
 
 public class StudyDaggerActivity extends BaseActivity {
 
-//    @Inject
-    ApiServer mApiServer; // 用 @Inject，表示使用注解的方式进行实例化
+    @Inject
+    UserManager mUserManager;
 
     @Override
     public int getLayoutResId() {
@@ -28,7 +28,12 @@ public class StudyDaggerActivity extends BaseActivity {
 
     @Override
     public void initView(Bundle savedInstanceState) {
-        mApiServer.register();
+//        DaggerUserComponent.create().inject(this);
+//       DaggerUserComponent.builder().userModule(new UserModule()).build().inject();
+        DaggerUserComponent.builder().userModule(new UserModule(this))
+                .httpModule(new HttpModule())
+                .build().inject(this);
+//        mApiServer.register();
+        mUserManager.register();
     }
 }
-

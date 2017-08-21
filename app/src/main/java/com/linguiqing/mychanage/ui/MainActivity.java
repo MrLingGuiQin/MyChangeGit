@@ -14,6 +14,7 @@ import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.interfaces.OnItemClickListener;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
+import com.linguiqing.mychanage.ui.dagger.StudyDaggerActivity;
 import com.linguiqing.mychanage.ui.drawerLayout.DrawerLayoutActivity;
 import com.linguiqing.mychanage.ui.eventbus.StudyEventBusActivity;
 import com.linguiqing.mychanage.ui.handler.StudyHandlerActivity;
@@ -28,7 +29,6 @@ import com.linguiqing.mychanage.ui.rxjava.StudyRxJavaActivity;
 import com.linguiqing.mychanage.ui.selectPhoto.activity.SelectPhotoActivity;
 import com.linguiqing.mychanage.ui.smartRefresh.SimpleProductListActivity;
 import com.linguiqing.mychanage.ui.usedAnimation.StudyAnimationActivity;
-import com.linguiqing.mychanage.ui.usedDataBinging.StudyDataBindingActivity;
 import com.linguiqing.mychanage.ui.usedFragment.UsedFragmentActivity;
 import com.linguiqing.mychanage.ui.usedOkHttp.UsedOkHttpActivity;
 import com.linguiqing.mychanage.ui.webView.StudyWebFragmentActivity;
@@ -145,7 +145,7 @@ public class MainActivity extends BaseActivity {
                         goToCustomActivity(StudyAnimationActivity.class);
                         break;
                     case 13: //DataBining的使用
-                        goToCustomActivity(StudyDataBindingActivity.class);
+//                        goToCustomActivity(StudyDataBindingActivity.class);
                         break;
                     case 14: // android 6.0 权限处理
                         goToCustomActivity(StudyPermissionActivity.class);
@@ -154,7 +154,7 @@ public class MainActivity extends BaseActivity {
                         goToCustomActivity(StudyRichTextActivity.class);
                         break;
                     case 16: // Dagger2的使用
-//                        goToCustomActivity(StudyPermissionActivity.class);
+                        goToCustomActivity(StudyDaggerActivity.class);
                         break;
                     case 17: // photoView的使用
                         goToCustomActivity(StudyPhotoViewActivity.class);

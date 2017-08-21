@@ -1,3 +1,11 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+</LinearLayout>
+
+
+<!--
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -131,7 +139,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="24dp"
             android:onClick="@{userPresener.onClickBindingVariable}"
-            android:text="高级绑定--动态变量"
+            android:text="高级绑定&#45;&#45;动态变量"
             android:textSize="16sp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -140,3 +148,4 @@
 
     </android.support.constraint.ConstraintLayout>
 </layout>
+-->

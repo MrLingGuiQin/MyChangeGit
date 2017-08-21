@@ -2,6 +2,16 @@ package com.linguiqing.mychanage.ui.dagger;
 
 import com.linguiqing.mychanage.util.LogUtil;
 
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 /**
  * ***************************************
  * statement:
@@ -11,9 +21,36 @@ import com.linguiqing.mychanage.util.LogUtil;
  */
 
 public class ApiServer {
+    OkHttpClient mOkHttpClient;
+
+    public static final MediaType JSON = MediaType.parse("application/json; charset = utf-8");
+
+    public ApiServer(OkHttpClient okHttpClient) {
+        mOkHttpClient = okHttpClient;
+        LogUtil.e("ApiServer 初始化----");
+    }
 
     public void register() {
-        LogUtil.e("请求数据拉！");
+        LogUtil.e("请求网络数据拉----");
+        // 模拟云端保存数据
+        RequestBody body = RequestBody.create(JSON, "");
+        Request request = new Request.Builder()
+                .url("")
+                .post(body)
+                .build();
+
+        mOkHttpClient.newCall(request)
+                .enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                    }
+                });
 
     }
 }
