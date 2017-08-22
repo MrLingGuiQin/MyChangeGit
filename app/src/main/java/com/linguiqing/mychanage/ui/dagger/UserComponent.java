@@ -1,7 +1,8 @@
 package com.linguiqing.mychanage.ui.dagger;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
-import dagger.Module;
 
 /**
  * ***************************************
@@ -12,6 +13,7 @@ import dagger.Module;
  */
 
 // 第二种方式 @Component(modules = {UserModule.class,HttpModule.class})
+@Singleton
 @Component(modules = UserModule.class)
 public interface UserComponent {
 

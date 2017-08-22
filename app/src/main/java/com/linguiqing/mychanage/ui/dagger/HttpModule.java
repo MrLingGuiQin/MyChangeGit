@@ -17,6 +17,7 @@ import okhttp3.OkHttpClient;
 @Module
 public class HttpModule {
 
+    @Singleton
     @Provides
     public OkHttpClient mOkHttpClient() {
         return new OkHttpClient().newBuilder().build();

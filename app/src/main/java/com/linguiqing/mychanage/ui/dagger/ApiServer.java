@@ -27,7 +27,7 @@ public class ApiServer {
 
     public ApiServer(OkHttpClient okHttpClient) {
         mOkHttpClient = okHttpClient;
-        LogUtil.e("ApiServer 初始化----");
+//        LogUtil.e("ApiServer 初始化----");
     }
 
     public void register() {
@@ -50,8 +50,8 @@ public class ApiServer {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
 
-                        LogUtil.e("onResponse=====");
-                        LogUtil.e(response.body().toString());
+//                        LogUtil.e("onResponse=====");
+//                        LogUtil.e(response.body().toString());
                     }
                 });
 

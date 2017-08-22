@@ -2,6 +2,10 @@ package com.linguiqing.mychanage.ui.dagger;
 
 import android.content.Context;
 
+import com.linguiqing.mychanage.util.LogUtil;
+
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -24,10 +28,20 @@ public class UserModule {
         mContext = context;
     }
 
-
+    @Named("dev")
     @Provides
-    public ApiServer providApiServer(OkHttpClient client) {
-        return new ApiServer(client);
+    public ApiServer providApiServerFromDev(OkHttpClient client) {
+        ApiServer apiServer = new ApiServer(client);
+        LogUtil.e("开发环境请求数据啦----   " + apiServer);
+        return apiServer;
+    }
+
+    @Named("release")
+    @Provides
+    public ApiServer providApiServerFromRelease(OkHttpClient client) {
+        ApiServer apiServer = new ApiServer(client);
+        LogUtil.e("正式环境请求数据啦----   " + apiServer);
+        return apiServer;
     }
 
     @Provides
@@ -37,7 +51,7 @@ public class UserModule {
     }
 
     @Provides
-    public UserManager providUserManager(ApiServer apiServer, UserStore userStore) {
+    public UserManager providUserManager(@Named("dev") ApiServer apiServer, UserStore userStore) {
         return new UserManager(apiServer, userStore);
     }
 }
