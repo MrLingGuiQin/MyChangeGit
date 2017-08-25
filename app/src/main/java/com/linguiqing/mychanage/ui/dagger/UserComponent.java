@@ -13,9 +13,9 @@ import dagger.Component;
  */
 
 // 第二种方式 @Component(modules = {UserModule.class,HttpModule.class})
-@Singleton
-@Component(modules = UserModule.class)
+@ActivityScope
+@Component(modules = UserModule.class, dependencies = AppComponent.class)
 public interface UserComponent {
 
-    void inject(StudyDaggerActivity activity);
+    void inject(DaggerUserActivity activity);
 }

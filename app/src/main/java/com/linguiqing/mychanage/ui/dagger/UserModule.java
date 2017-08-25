@@ -19,7 +19,7 @@ import okhttp3.OkHttpClient;
  */
 
 // 第一种引入HttpModule的方式  @Module(includes = HttpModule.class)
-@Module(includes = HttpModule.class)
+@Module
 public class UserModule {
 
     private Context mContext;
@@ -47,11 +47,10 @@ public class UserModule {
     @Provides
     public UserStore provideUserStore() {
         return new UserStore(mContext);
-//        return new UserStore();
     }
 
     @Provides
-    public UserManager providUserManager(@Named("dev") ApiServer apiServer, UserStore userStore) {
-        return new UserManager(apiServer, userStore);
+    public UserManager providUserManager(@Named("dev") ApiServer apiServer) {
+        return new UserManager(apiServer);
     }
 }

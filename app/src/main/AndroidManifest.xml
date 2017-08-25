@@ -93,12 +93,14 @@
         <activity
             android:name=".ui.usedAnimation.StudyAnimationActivity"
             android:screenOrientation="portrait"/>
-       <!-- <activity
+        <!--
+        <activity
             android:name=".ui.usedDataBinging.StudyDataBindingActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.usedDataBinging.StudyDataBindingToRecylerViewActivity"
-            android:screenOrientation="portrait"/>-->
+            android:screenOrientation="portrait"/>
+        -->
         <activity
             android:name=".ui.permission.StudyPermissionActivity"
             android:screenOrientation="portrait"/>
@@ -116,6 +118,10 @@
         <activity android:name=".ui.recylerView.activity.CalendarRecylerViewActivity"/>
         <activity android:name=".ui.retrofit.StudyRetrofitActivity"/>
         <activity android:name=".ui.dagger.StudyDaggerActivity">
+        </activity>
+        <activity android:name=".ui.dagger.DaggerLoginActivity">
+        </activity>
+        <activity android:name=".ui.dagger.DaggerUserActivity">
         </activity>
     </application>
 

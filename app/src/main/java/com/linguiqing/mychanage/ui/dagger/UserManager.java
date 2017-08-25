@@ -12,16 +12,17 @@ import com.linguiqing.mychanage.util.LogUtil;
 
 public class UserManager {
     private ApiServer mApiServer;
-    private UserStore mUserStore;
 
-    public UserManager(ApiServer apiServer, UserStore userStore) {
+    public UserManager(ApiServer apiServer) {
         LogUtil.e("UserManager 初始化----");
-        mUserStore = userStore;
         mApiServer = apiServer;
+    }
+
+    public void login() {
+        mApiServer.login();
     }
 
     public void register() {
         mApiServer.register();
-        mUserStore.register();
     }
 }

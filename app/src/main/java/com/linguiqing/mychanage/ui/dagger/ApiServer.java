@@ -27,7 +27,11 @@ public class ApiServer {
 
     public ApiServer(OkHttpClient okHttpClient) {
         mOkHttpClient = okHttpClient;
-//        LogUtil.e("ApiServer 初始化----");
+        LogUtil.e("ApiServer 初始化---- mOkHttpClient = " + mOkHttpClient);
+    }
+
+    public void login() {
+        LogUtil.e("去登录拉----");
     }
 
     public void register() {

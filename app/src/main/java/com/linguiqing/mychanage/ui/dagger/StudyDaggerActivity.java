@@ -1,15 +1,14 @@
 package com.linguiqing.mychanage.ui.dagger;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
-import com.linguiqing.mychanage.util.LogUtil;
+import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import okhttp3.OkHttpClient;
+import butterknife.OnClick;
 
 
 /**
@@ -22,40 +21,33 @@ import okhttp3.OkHttpClient;
 
 public class StudyDaggerActivity extends BaseActivity {
 
-    @Named("dev")
-    @Inject
-    ApiServer mApiServerDev;
-
-    @Named("release")
-    @Inject
-    ApiServer mApiServerRelease;
-    @Inject
-    OkHttpClient mOkHttpClient1;
-    @Inject
-    OkHttpClient mOkHttpClient2;
-
-    @Inject
-    UserManager mUserManager;
-
-
     @Override
     public int getLayoutResId() {
         return R.layout.activity_study_dagger;
     }
 
+
+    @Override
+    public View addCommonTitlebar(RelativeLayout root) {
+        Titlebar titlebar = new Titlebar(mContext, root);
+        titlebar.initTitlebar(true, "Dagger2的使用", "", null);
+        return titlebar;
+    }
+
     @Override
     public void initView(Bundle savedInstanceState) {
-        DaggerUserComponent.builder().userModule(new UserModule(this))
-                .httpModule(new HttpModule())
-                .build().inject(this);
-        mApiServerDev.register();
-        mApiServerRelease.register();
-        mUserManager.register();
 
-        // @Singleton修饰 同一个Component 获取的是单列对象
-        // mOkHttpClient1 =  okhttp3.OkHttpClient@bc8fdee
-        // mOkHttpClient2 =  okhttp3.OkHttpClient@bc8fdee
-        LogUtil.e("mOkHttpClient1 =  " + mOkHttpClient1);
-        LogUtil.e("mOkHttpClient2 =  " + mOkHttpClient2);
+    }
+
+    @OnClick({R.id.btn_dagger_login, R.id.btn_dagger_user})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_dagger_login:
+                goToCustomActivity(DaggerLoginActivity.class);
+                break;
+            case R.id.btn_dagger_user:
+                goToCustomActivity(DaggerUserActivity.class);
+                break;
+        }
     }
 }
