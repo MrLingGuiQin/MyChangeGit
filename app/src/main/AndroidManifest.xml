@@ -94,10 +94,10 @@
             android:name=".ui.usedAnimation.StudyAnimationActivity"
             android:screenOrientation="portrait"/>
         <!--
-        <activity
+        <LauncherModeActivity
             android:name=".ui.usedDataBinging.StudyDataBindingActivity"
             android:screenOrientation="portrait"/>
-        <activity
+        <LauncherModeActivity
             android:name=".ui.usedDataBinging.StudyDataBindingToRecylerViewActivity"
             android:screenOrientation="portrait"/>
         -->
@@ -117,12 +117,14 @@
         <activity android:name=".ui.rxjava.RxImageLoadActivity"/>
         <activity android:name=".ui.recylerView.activity.CalendarRecylerViewActivity"/>
         <activity android:name=".ui.retrofit.StudyRetrofitActivity"/>
-        <activity android:name=".ui.dagger.StudyDaggerActivity">
-        </activity>
-        <activity android:name=".ui.dagger.DaggerLoginActivity">
-        </activity>
-        <activity android:name=".ui.dagger.DaggerUserActivity">
-        </activity>
+        <activity android:name=".ui.dagger.StudyDaggerActivity"/>
+        <activity android:name=".ui.dagger.DaggerLoginActivity"/>
+        <activity android:name=".ui.dagger.DaggerUserActivity"/>
+        <activity android:name=".ui.review.activity.FirstActivity"
+            android:launchMode="standard"/>
+        <activity android:name=".ui.review.activity.SecondActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".ui.review.activity.LauncherModeActivity"/>
     </application>
 
 </manifest>

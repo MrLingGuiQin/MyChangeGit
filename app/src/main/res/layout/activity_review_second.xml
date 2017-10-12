@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_review_second_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="activity 路径"/>
+
+    <TextView
+        android:id="@+id/tv_review_second_taskId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="activity 所处栈id"/>
+
+    <Button
+        android:id="@+id/btn_review_go_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转FirstActivity"
+        android:textAllCaps="false"/>
+</LinearLayout>

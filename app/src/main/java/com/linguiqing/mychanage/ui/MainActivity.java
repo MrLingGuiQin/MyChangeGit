@@ -24,6 +24,7 @@ import com.linguiqing.mychanage.ui.productSku.ProductSkuActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewUsedMultiTypeActivity;
 import com.linguiqing.mychanage.ui.retrofit.StudyRetrofitActivity;
+import com.linguiqing.mychanage.ui.review.activity.LauncherModeActivity;
 import com.linguiqing.mychanage.ui.richText.StudyRichTextActivity;
 import com.linguiqing.mychanage.ui.rxjava.StudyRxJavaActivity;
 import com.linguiqing.mychanage.ui.selectPhoto.activity.SelectPhotoActivity;
@@ -171,8 +172,10 @@ public class MainActivity extends BaseActivity {
                         break;
 
                     case 21:  //SmartRefreshLayout的使用
-                        goToCustomActivity(SimpleProductListActivity.class);
+//                        goToCustomActivity(SimpleProductListActivity.class);
 //                        goToCustomActivity(CalendarRecylerViewActivity.class);
+                      goToCustomActivity(LauncherModeActivity.class);
+
                         break;
                 }
             }

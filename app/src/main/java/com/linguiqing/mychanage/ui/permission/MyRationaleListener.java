@@ -33,7 +33,7 @@ public class MyRationaleListener implements RationaleListener {
     @Override
     public void showRequestPermissionRationale(int requestCode, Rationale rationale) {
         // 这里的对话框可以自定义，只要调用rationale.resume()就可以继续申请。
-//        AndPermission.rationaleDialog(activity, rationale).show();
+//        AndPermission.rationaleDialog(LauncherModeActivity, rationale).show();
         rationale.resume();
     }
 }
