@@ -61,7 +61,7 @@ public class StudyGreenDaoActivity extends BaseActivity {
     private Book addBook() {
         int index = mBookList.size();
         Book book = new Book((long) index, "幸福的拾荒者" + index,
-                index + ".00", "胡歌" + index, index * 10, "https://baike.baidu.com/pic/%E5%B9%B8%E7%A6%8F%E7%9A%84%E6%8B%BE%E8%8D%92%E8%80%85/5845498/0/ca1349540923dd54f1eb6b50d309b3de9c82486a?fr=lemma&ct=single#aid=0&pic=d56b3634c86340285ab5f529");
+                index + ".00", "胡歌" + index, index * 10, "https://img13.360buyimg.com/n1/s200x200_16948/bdc0262d-ae08-4a3f-9c4a-f9dbeb82c419.jpg");
         mBookList.add(book);
         return book;
     }

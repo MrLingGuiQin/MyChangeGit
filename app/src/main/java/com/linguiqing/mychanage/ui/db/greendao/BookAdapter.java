@@ -37,7 +37,7 @@ public class BookAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
         holder.setText(R.id.tv_item_book_author, "作者：" + bookStore.getAuthor());
         holder.setText(R.id.tv_item_book_shell, "销量：" + bookStore.getShell_num());
         holder.setText(R.id.tv_item_book_price, "￥" + bookStore.getPrice());
-        holder.setImageByUrl(R.id.img_item_book, bookStore.getImage_url());
+//        holder.setImageByUrl(R.id.img_item_book, bookStore.getImage_url());
     }
 
 

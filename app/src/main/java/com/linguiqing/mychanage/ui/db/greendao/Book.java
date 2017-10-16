@@ -16,7 +16,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Book {
 
-    // 不能用int 对象的Id，使用Long类型作为EntityId，否则会报错。(autoincrement = true)表示主键会自增，如果false就会使用旧值
+    // Id不能用int类型，使用Long类型作为EntityId，否则会报错。(autoincrement = true)表示主键会自增，如果false就会使用旧值
     @Id(autoincrement = true)
     private Long id; // 主键 图书id
 
