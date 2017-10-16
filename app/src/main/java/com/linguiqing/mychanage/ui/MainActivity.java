@@ -15,6 +15,8 @@ import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.interfaces.OnItemClickListener;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.ui.dagger.StudyDaggerActivity;
+import com.linguiqing.mychanage.ui.db.greendao.StudyGreenDaoActivity;
+import com.linguiqing.mychanage.ui.db.natives.StudyNativeDbActivity;
 import com.linguiqing.mychanage.ui.drawerLayout.DrawerLayoutActivity;
 import com.linguiqing.mychanage.ui.eventbus.StudyEventBusActivity;
 import com.linguiqing.mychanage.ui.handler.StudyHandlerActivity;
@@ -82,6 +84,8 @@ public class MainActivity extends BaseActivity {
         mData.add("RxJava的使用");
         mData.add("Retrofit的使用");
         mData.add("SmartRefreshLayout的使用");
+        mData.add("GreenDao的使用");
+        mData.add("SqliteDB的使用");
     }
 
     @Override
@@ -174,8 +178,14 @@ public class MainActivity extends BaseActivity {
                     case 21:  //SmartRefreshLayout的使用
 //                        goToCustomActivity(SimpleProductListActivity.class);
 //                        goToCustomActivity(CalendarRecylerViewActivity.class);
-                      goToCustomActivity(LauncherModeActivity.class);
+                        goToCustomActivity(LauncherModeActivity.class);
 
+                        break;
+                    case 22:
+                        goToCustomActivity(StudyGreenDaoActivity.class);
+                        break;
+                    case 23:
+                        goToCustomActivity(StudyNativeDbActivity.class);
                         break;
                 }
             }

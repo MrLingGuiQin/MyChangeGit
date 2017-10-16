@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.linguiqing.mychanage.R;
+import com.linguiqing.mychanage.app.MyAppLication;
 
 import butterknife.ButterKnife;
 
@@ -100,6 +101,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     public void goToCustomActivity(Class<?> cls) {
         Intent intent = new Intent(mContext, cls);
         startActivity(intent);
+    }
+
+    public MyAppLication getApp() {
+        return (MyAppLication) getApplication();
     }
 
     @Override

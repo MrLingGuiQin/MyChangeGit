@@ -13,6 +13,8 @@ buildscript {
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'  //添加lamdas
         classpath 'com.novoda:bintray-release:0.3.4'
+        // 配置greendao
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.2' // add plugin
         // dagger2
 //        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 
