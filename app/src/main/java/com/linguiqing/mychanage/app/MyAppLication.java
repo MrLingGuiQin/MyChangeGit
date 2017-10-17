@@ -25,11 +25,14 @@ public class MyAppLication extends Application {
     AppComponent mAppComponent;
     private static DaoSession mDaoSession;
     private SQLiteDatabase mBookDao;
+    public static MyAppLication INSTANCE;
+
 
     @Override
     public void onCreate() {
         super.onCreate();
         LogUtil.init("My Change");
+        INSTANCE = this;
         mAppComponent = DaggerAppComponent.create();
         // 配置数据库
         setupDatabaseGreenDao();
@@ -39,7 +42,7 @@ public class MyAppLication extends Application {
 
     // 用android 原生的方式创建数据库
     private void setupDatabaseNative() {
-        mBookDao = BookOpenHelper.getInstance(this).getWritableDatabase();
+        mBookDao = BookOpenHelper.getInstance().getWritableDatabase();
     }
 
     // 用greenDao 的方式创建数据库
@@ -66,5 +69,6 @@ public class MyAppLication extends Application {
     public AppComponent getAppComponent() {
         return mAppComponent;
     }
+
 
 }

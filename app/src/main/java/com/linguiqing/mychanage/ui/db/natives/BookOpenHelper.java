@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.linguiqing.mychanage.app.MyAppLication;
+
 
 /**
  * ***************************************
@@ -14,18 +16,20 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class BookOpenHelper extends SQLiteOpenHelper {
 
-
-    private static BookOpenHelper helper;
-
     public BookOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    public static BookOpenHelper getInstance(Context context) {
-        if (helper == null) {
-            helper = new BookOpenHelper(context, "book.db", null, 1);
-        }
-        return helper;
+    /**
+     * 通过static 内部类 实现单例模式
+     */
+    private static class Holder {
+        // 创建 book.db数据库
+        private static final BookOpenHelper INSTANCE = new BookOpenHelper(MyAppLication.INSTANCE, "book.db", null, 1);
+    }
+
+    public static BookOpenHelper getInstance() {
+        return Holder.INSTANCE;
     }
 
     public void onCreate(SQLiteDatabase db) {

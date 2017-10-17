@@ -6,6 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.linguiqing.mychanage.R;
+import com.linguiqing.mychanage.app.MyAppLication;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
 import com.linguiqing.mychanage.util.LogUtil;
