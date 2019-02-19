@@ -25,15 +25,12 @@ import com.linguiqing.mychanage.ui.photoView.StudyPhotoViewActivity;
 import com.linguiqing.mychanage.ui.productSku.ProductSkuActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewActivity;
 import com.linguiqing.mychanage.ui.recylerView.activity.VariousRecylerViewUsedMultiTypeActivity;
-import com.linguiqing.mychanage.ui.retrofit.StudyRetrofitActivity;
 import com.linguiqing.mychanage.ui.review.activity.LauncherModeActivity;
 import com.linguiqing.mychanage.ui.richText.StudyRichTextActivity;
 import com.linguiqing.mychanage.ui.rxjava.StudyRxJavaActivity;
 import com.linguiqing.mychanage.ui.selectPhoto.activity.SelectPhotoActivity;
-import com.linguiqing.mychanage.ui.smartRefresh.SimpleProductListActivity;
 import com.linguiqing.mychanage.ui.usedAnimation.StudyAnimationActivity;
 import com.linguiqing.mychanage.ui.usedFragment.UsedFragmentActivity;
-import com.linguiqing.mychanage.ui.usedOkHttp.UsedOkHttpActivity;
 import com.linguiqing.mychanage.ui.webView.StudyWebFragmentActivity;
 import com.linguiqing.mychanage.util.BaseCustomDialog;
 import com.linguiqing.mychanage.util.DividerItemDecoration;
@@ -71,7 +68,6 @@ public class MainActivity extends BaseActivity {
         mData.add("fragment的使用");
         mData.add("内存泄露优化");
         mData.add("商品sku业务实现");
-        mData.add("okhttp的使用");
         mData.add("DrawerLayout测滑的使用");
         mData.add("EventBus的使用");
         mData.add("Animation动画的使用");
@@ -82,7 +78,6 @@ public class MainActivity extends BaseActivity {
         mData.add("PhotoView的使用");
         mData.add("WebView的使用");
         mData.add("RxJava的使用");
-        mData.add("Retrofit的使用");
         mData.add("SmartRefreshLayout的使用");
         mData.add("GreenDao的使用");
         mData.add("SqliteDB的使用");
@@ -137,54 +132,48 @@ public class MainActivity extends BaseActivity {
                         goToCustomActivity(ProductSkuActivity.class);
                         break;
 
-                    case 9: //okhttp的使用
-                        goToCustomActivity(UsedOkHttpActivity.class);
-                        break;
-                    case 10: //DrawerLayout测滑菜单的使用
+                    case 9: //DrawerLayout测滑菜单的使用
                         goToCustomActivity(DrawerLayoutActivity.class);
                         break;
-                    case 11: //EventBus的使用
+                    case 10: //EventBus的使用
                         goToCustomActivity(StudyEventBusActivity.class);
                         break;
-                    case 12: //动画的使用
+                    case 11: //动画的使用
                         goToCustomActivity(StudyAnimationActivity.class);
                         break;
-                    case 13: //DataBining的使用
+                    case 12: //DataBining的使用
 //                        goToCustomActivity(StudyDataBindingActivity.class);
                         break;
-                    case 14: // android 6.0 权限处理
+                    case 13: // android 6.0 权限处理
                         goToCustomActivity(StudyPermissionActivity.class);
                         break;
-                    case 15: // textView 富文本的使用
+                    case 14: // textView 富文本的使用
                         goToCustomActivity(StudyRichTextActivity.class);
                         break;
-                    case 16: // Dagger2的使用
+                    case 15: // Dagger2的使用
                         goToCustomActivity(StudyDaggerActivity.class);
                         break;
-                    case 17: // photoView的使用
+                    case 16: // photoView的使用
                         goToCustomActivity(StudyPhotoViewActivity.class);
                         break;
-                    case 18: //webView的使用
+                    case 17: //webView的使用
 //                        goToCustomActivity(StudyWebActivity.class);
                         goToCustomActivity(StudyWebFragmentActivity.class);
                         break;
-                    case 19: //RxJava的使用
+                    case 18: //RxJava的使用
                         goToCustomActivity(StudyRxJavaActivity.class);
                         break;
-                    case 20: //Retrofit的使用
-                        goToCustomActivity(StudyRetrofitActivity.class);
-                        break;
 
-                    case 21:  //SmartRefreshLayout的使用
+                    case 19:  //SmartRefreshLayout的使用
 //                        goToCustomActivity(SimpleProductListActivity.class);
 //                        goToCustomActivity(CalendarRecylerViewActivity.class);
                         goToCustomActivity(LauncherModeActivity.class);
 
                         break;
-                    case 22:
+                    case 20:
                         goToCustomActivity(StudyGreenDaoActivity.class);
                         break;
-                    case 23:
+                    case 21:
                         goToCustomActivity(StudyNativeDbActivity.class);
                         break;
                 }

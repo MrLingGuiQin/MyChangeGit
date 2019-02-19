@@ -49,15 +49,6 @@ public class StudyWebViewActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         mWebView.setWebViewClient(new BaseWebClient(this));
-        // 第一种url不携带参数
-//        String url = "http://m.gxyj.com:83/active/ningxiahongjiuapp/index.html";
-        // 第二种 url携带参数get请求
-//        String url = "http://10.1.102.166:8680/homepage/getGoodShop.jhtml?category=18&positionName=00000000";
-        // 第三种 url携带参数post请求
-        String url = "http://10.1.102.166:8680/homepage/getGoodShop.jhtml";
-        String params = "category=18&positionName=00000000";
-//        mWebView.loadUrl(url);
-//        mWebView.postUrl(url, params.getBytes());
         mWebView.loadUrl("https://m.jd.com/");
     }
 

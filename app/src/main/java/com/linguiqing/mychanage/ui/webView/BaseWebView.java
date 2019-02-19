@@ -34,7 +34,7 @@ public class BaseWebView extends WebView {
         settings.setJavaScriptEnabled(true);
 
         //User-agent设置，标示由谁请求，提交订单确认支付的时候需要指定
-        settings.setUserAgentString("gxyj_android" + settings.getUserAgentString());
+        settings.setUserAgentString("添加客户端的标识" + settings.getUserAgentString());
 
         //缓存相关
         // 大部分网页需要自己保存一些数据,这个时候就的设置下面这个属性

@@ -32,20 +32,6 @@ public class ProductSkuBean {
     }
 
     public static class SkuProductListBean {
-        /**
-         * originPrice : 1072.00
-         * prodBulk : null
-         * prodColorPropImg : http://image.gxyj.com/v4/images/1/9000000024/1446363457472.jpg
-         * prodImg : http://image.gxyj.com/v4/images/1/9000000024/1446356779290.jpg
-         * prodPropName : 件
-         * prodSkuId : 00000000000000006627
-         * prodWeight : null
-         * skuGroup : [{"prodEnumId":"0000023343","prodPropId":"0000100306"},{"prodEnumId":"0000023364","prodPropId":"0000100307"},{"prodEnumId":"0000023408","prodPropId":"0000100322"}]
-         * skuPrice : 1072.00
-         * skuStorage : 100
-         * status : 1
-         */
-
         private String originPrice;
         private String prodBulk;
         private String prodColorPropImg;
