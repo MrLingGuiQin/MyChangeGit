@@ -14,7 +14,6 @@ import com.linguiqing.mychanage.R;
 import com.linguiqing.mychanage.base.BaseActivity;
 import com.linguiqing.mychanage.interfaces.OnItemClickListener;
 import com.linguiqing.mychanage.ui.coustomView.Titlebar;
-import com.linguiqing.mychanage.ui.dagger.StudyDaggerActivity;
 import com.linguiqing.mychanage.ui.db.greendao.StudyGreenDaoActivity;
 import com.linguiqing.mychanage.ui.db.natives.StudyNativeDbActivity;
 import com.linguiqing.mychanage.ui.drawerLayout.DrawerLayoutActivity;
@@ -151,7 +150,7 @@ public class MainActivity extends BaseActivity {
                         goToCustomActivity(StudyRichTextActivity.class);
                         break;
                     case 15: // Dagger2的使用
-                        goToCustomActivity(StudyDaggerActivity.class);
+
                         break;
                     case 16: // photoView的使用
                         goToCustomActivity(StudyPhotoViewActivity.class);

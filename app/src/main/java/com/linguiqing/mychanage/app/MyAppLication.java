@@ -4,8 +4,6 @@ import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.facebook.stetho.Stetho;
-import com.linguiqing.mychanage.ui.dagger.AppComponent;
-import com.linguiqing.mychanage.ui.dagger.DaggerAppComponent;
 import com.linguiqing.mychanage.ui.db.greendao.DaoMaster;
 import com.linguiqing.mychanage.ui.db.greendao.DaoSession;
 import com.linguiqing.mychanage.ui.db.natives.BookOpenHelper;
@@ -22,7 +20,6 @@ import org.greenrobot.greendao.database.Database;
  */
 
 public class MyAppLication extends Application {
-    AppComponent mAppComponent;
     private static DaoSession mDaoSession;
     private SQLiteDatabase mBookDao;
     public static MyAppLication INSTANCE;
@@ -33,7 +30,6 @@ public class MyAppLication extends Application {
         super.onCreate();
         LogUtil.init("My Change");
         INSTANCE = this;
-        mAppComponent = DaggerAppComponent.create();
         // 配置数据库
         setupDatabaseGreenDao();
         setupDatabaseNative();
@@ -64,11 +60,5 @@ public class MyAppLication extends Application {
     public SQLiteDatabase getBookDao() {
         return mBookDao;
     }
-
-    // 获取全局的AppComponent
-    public AppComponent getAppComponent() {
-        return mAppComponent;
-    }
-
 
 }

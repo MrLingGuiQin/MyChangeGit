@@ -4,11 +4,8 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.chrisbanes.photoview.PhotoView;
 import com.linguiqing.mychanage.R;
-
-import java.util.List;
-
-import uk.co.senab.photoview.PhotoView;
 
 /**
  * ***************************************

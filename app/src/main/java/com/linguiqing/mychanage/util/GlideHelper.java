@@ -32,7 +32,6 @@ public class GlideHelper {
     public static void loadImage2(Context context, String url, ImageView  imageView) {
         Glide.with(context)
                 .load(url)
-                .bitmapTransform(new CropCircleTransformation(context))
                 .placeholder(R.drawable.img_default)
                 .into(imageView);
     }

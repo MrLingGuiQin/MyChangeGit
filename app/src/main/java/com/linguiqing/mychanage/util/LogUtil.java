@@ -1,7 +1,6 @@
 package com.linguiqing.mychanage.util;
 
 import com.linguiqing.mychanage.BuildConfig;
-import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 
 /**
@@ -15,12 +14,7 @@ import com.orhanobut.logger.Logger;
 public class LogUtil {
 
     public static void init(String tag) {
-        Logger.init(tag)
-                .methodCount(3)                 // default 2
-                .hideThreadInfo()               // default shown
-                .logLevel(LogLevel.FULL)        // FULL 打印输出  、 NONE 不打印
-                .methodOffset(2);            // default 0
-        //   .logAdapter(new AndroidLogAdapter()); //default AndroidLogAdapter
+
     }
 
     public static void d(String msg) {
